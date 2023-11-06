@@ -9,15 +9,26 @@
   <link rel="stylesheet" href="mainStyle.css">
   
   <!-- ~Scripts -->
-  <script src="mainScript.js" defer></script>
+  <script src="initializeVariables.js" defer></script>
+  <script src="startGameLoop.js" defer></script>
 </head>
 <body>
+  <!-- If you see any special characters in comments, I use them to color comments so that different sections are easier to find -->
+  <!-- # Everything related to the game -->
   <section id="game">
-    <header id="playerInformation"></header>
-    <main id="gameplayArea"></main>
+    <div id="playerInformation"></div>
+    <div id="gameplayArea">
+      <!-- * All entities that can interact with each other will go in here -->
+      <div id="gameEntities"></div>
+      
+      <!-- * All visual stuff like the TileMap will go here -->
+      <div id="gameMap"></div>
+    </div>
   </section>
   
-  <section id="projectInfo">
+  <!-- # Project Information which is under actual game -->
+  <!-- Since Semantic html helps screen readers, I'll use semantics for the project description -->
+  <section id="project">
     <header id=projectTitle></header>
     <main id="projectDescription"></main>
     <footer id="credits"></footer>
