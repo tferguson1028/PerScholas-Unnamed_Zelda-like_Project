@@ -1,7 +1,7 @@
 :root {
   --tileSize: 32px;
-  --tilesX: 18;
-  --tilesY: 12;
+  --tilesX: 16;
+  --tilesY: 10;
 }
 
 html, body {
@@ -17,7 +17,6 @@ body * {
   padding: 0;
   display: inline-block;
   box-sizing: border-box;
-  background-color:cornflowerblue;
   /* border: 1px solid white; */
 }
 

@@ -6,6 +6,8 @@
   max-height: fit-content;
   align-items: center;
   justify-content: center;
+  
+  background-color: slategray;
 }
 
 #game > *
@@ -16,21 +18,10 @@
   max-width: calc(var(--tileSize) * var(--tilesX));
 }
 
-#game > #gameplayArea {
-  height: calc(var(--tileSize) * var(--tilesY));
-  min-height: calc(var(--tileSize) * var(--tilesY));
-  max-height: calc(var(--tileSize) * var(--tilesY));
-  background-color: gray;
-}
-
-#gameplayArea *
-{
-  position: absolute;
-  transform-origin: top left;
-}
-
+/* # Header Stuff */
 #game > #playerInformation {
   display: flex;
+  height: calc(var(--tileSize) * 2);
 }
 
 #game > #playerInformation *
@@ -39,41 +30,60 @@
   flex: 1;
 }
 
-#gameMap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: green;
+#game > #gameplayArea {
+  height: calc(var(--tileSize) * var(--tilesY));
+  min-height: calc(var(--tileSize) * var(--tilesY));
+  max-height: calc(var(--tileSize) * var(--tilesY));
+  background-color: bisque;
+}
+
+/* # MAP STUFF */
+#game > #gameplayArea > #gameMap {
+  position: absolute;
+  min-width: calc(var(--tileSize) * var(--tilesX));
+  max-width: calc(var(--tileSize) * var(--tilesX));
+  min-height: calc(var(--tileSize) * var(--tilesY));
+  max-height: calc(var(--tileSize) * var(--tilesY));
+  background-color: #00aa00aa;
   
+  display: grid;
+  grid-template: 
+    repeat(var(--tilesY), var(--tileSize)) /
+    repeat(var(--tilesX), var(--tileSize));
 }
 
 .tile
 {
-  position: absolute;
-  /* transform: translate(50px, 50px); */
+  position: relative;
   width: var(--tileSize);
   height: var(--tileSize);
+  background-color:cornflowerblue;
 }
 
+.testTile {opacity: 70%;}
+
+/* # ENTITY STUFF */
 .entity {
-  position: absolute;
-  right: 5px;
+  position: relative;
+  
+  /* Use translate to move */
+  translate: 0px 0px; 
+  
   width: var(--tileSize) !important;
   height: var(--tileSize) !important;
   white-space: nowrap !important;
-  /* overflow: visible !important; */
+  overflow: visible !important;
+  background-color: red;
 }
 
 .entity * {
+  position: absolute;
   width: 100%;
   height: 100%;
+  /* background-color: green; */
 }
 
-.hitBox .hurtBox
+.entity > .hitBox, .entity > .hurtBox
 {
-  border: 2px solid red;
-  background-color: rebeccapurple;
-  width: 100%;
-  height: 100%;
-  display: none;
+  border: 8px solid yellow;
 }
