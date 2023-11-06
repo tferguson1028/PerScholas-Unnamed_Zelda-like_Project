@@ -6,14 +6,15 @@
 - Add a section for the game to be displayed in
 
 ### Step 2 - Tilemap CSS
-- Create a section where the map will display inside of where the game displays.
+- Create a section where the map will display inside of 
+  where the game displays.
 - Set the position to absolute.
 - Set the display to grid, with template of repeat(18,12)
 - Add testing tiles for visibility
 
 ### Step 3 - Make entities
-- Create div in #gameEntities that will act as the game's entities.
-Entities are anything that can be interacted with. (Doors, walls, player, enemy, etc.)
+- Create div in #gameEntities that will act as the game's 
+  entities. Entities are anything that can be interacted with. (Doors, walls, player, enemy, etc.)
 - Have these entities originate on the top left of the map.
 - Have these entities move with JS.
 - Have these entities transform at the center.
@@ -36,11 +37,25 @@ Make this loop run at 60 FPS. Pass a delta var in the game loop.
 - Use JS to create collision
 
 ### Step 7
+- Add attacks for player and enemies.
 - Use JS to create hitbox-hurtbox reactions.
 
 <br>
 
-# Day3 - If everything works
+# Day 3 - If everything works
+### Step 8
 - Acquire/create assets
 - Apply sprites to all things.
 
+<br>
+
+# Day 4
+
+### Step 9 - Animations :D
+- Add animations to attacks
+
+<br> 
+
+# Day 5-7
+
+This is allocated as bleed over time. Fix stuff that ain't working.

@@ -8,6 +8,8 @@
   justify-content: center;
   
   background-color: slategray;
+
+  overflow: hidden;
 }
 
 #game > *
@@ -86,4 +88,5 @@
 .entity > .hitBox, .entity > .hurtBox
 {
   border: 8px solid yellow;
+  visibility: hidden;
 }
