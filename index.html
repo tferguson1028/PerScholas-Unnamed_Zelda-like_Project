@@ -41,11 +41,12 @@
     <div id="gameplayArea">
       <!-- All visual stuff like the tile map will go here  -->
       <!-- Actual map information will be held in separate files and the HTML will be generated using JS. -->
-      <!-- The tiles will be implemented using background-image, since I seem to be better at using those than img tags. -->
       <!-- * Map stuff goes here -->
       <div id="gameMap">
-        <div class="tile tileID0">Test</div>
         <div class="tile tileID0 testTile">Test</div>
+        <div class="tile tileID0"> <!-- Tile Template -->
+          <img class="sprite" src="" alt="#">
+        </div>
         <div class="tile tileID0 testTile">Test</div>
         <div class="tile tileID0 testTile">Test</div>
         <div class="tile tileID0 testTile">Test</div>
@@ -77,14 +78,14 @@
         <!-- Example entities -->
         <!-- These will be generated and placed into the #gameEntities tag using js -->
         <div class="entity player">
-          <img src="" alt="#" class="sprite">
+          <img class="sprite" src="" alt="#">
           <div class="hitBox"></div>
           <div class="hurtBox"></div>
         </div>
         
         <!-- For enemies -->
         <!-- <div class="entity enemy enemyType0">
-          <img src="" alt="#" class="sprite">
+          <img class="sprite" src="" alt="#">
           <div class="hitBox"></div>
           <div class="hurtBox"></div>
         </div> -->
