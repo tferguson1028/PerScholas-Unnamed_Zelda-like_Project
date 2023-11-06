@@ -37,14 +37,15 @@ Make this loop run at 60 FPS. Pass a delta var in the game loop.
 - Use JS to move entities. This can be done by using el.style.translate
 - Use JS to create collision
 
-### Step 7
+### Step 7 - Combat and interactions
 - Add attacks for player and enemies.
 - Use JS to create hitbox-hurtbox reactions.
+- Create player interactions with non-hostile entities (items, doors, chests, etc.).
 
 <br>
 
 # Day 3 - If everything works
-### Step 8
+### Step 8 - Getting and applying assets
 - Acquire/create assets
 - Apply sprites to all things.
 - Add GUI Elements
