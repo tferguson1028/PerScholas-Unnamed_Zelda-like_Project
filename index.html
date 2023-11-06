@@ -13,18 +13,19 @@
   <script src="startGameLoop.js" defer></script>
 </head>
 <body>
-  <!-- Dev Notes: 
-    If you see any special characters in comments, I use them to color comments so that different sections are easier to find
-    I'm starting with stuff that can make a bigger game, but it's just so I can scale it later if need be. 
-    What I'll be making for the project will probably have 2 enemy types and 3 rooms.
+  <!-- Dev Notes for Readers:
+    - If you see any special characters in comments, I use them to color comments so that different sections are easier to find
+    
+    - I'm starting with stuff that can make a bigger game, but it's just so I can scale it later if need be. 
+      What I'll be making for the project will probably have 2 enemy types and 3 rooms.
   -->
   
   
   <!-- # Everything related to the game -->
   <section id="game">
     <!-- 
-      ^ This is a header section that will show information about the player's state to the user 
-      ^ It will use flexbox to layout the info
+      This is a header section that will show information about the player's state to the user 
+      It will use flexbox to layout the info
     -->
     <div id="playerInformation">
       <span class="display health"></span>
@@ -53,12 +54,14 @@
       </div>
       
       <!-- 
-        ^ All visual stuff like the tile map will go here 
-        ^ Actual map information will be held in separate files and 
-        ^ the HTML will be generated using JS. 
+        All visual stuff like the tile map will go here 
+        Actual map information will be held in separate files and 
+        the HTML will be generated using JS.
+        
+        The tiles will be implemented using background-image, since I seem to be better at using those than img tags.
       -->
       <div id="gameMap">
-        <span class="tile tileID0"></span>
+        <span class="tile tileID0"></span> <!-- Example Tile -->
       </div>
     </div>
   </section>
@@ -76,7 +79,9 @@
 
 <!-- 
   References for Dev:
-    Collision detection: https://stackoverflow.com/a/63419039
+    - Try to take inspiration from my last project, I did a couple neat tricks in there.
+    - Try to make keystroke catching on frame script that I was making work. 
+    - Collision detection: https://stackoverflow.com/a/63419039
     
 
  -->
