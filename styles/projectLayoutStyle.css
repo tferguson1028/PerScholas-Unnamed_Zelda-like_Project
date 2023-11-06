@@ -1,0 +1,8 @@
+#project
+{
+}
+
+#project > #projectDescription
+{
+  flex: 1;
+}

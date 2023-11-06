@@ -7,6 +7,8 @@
   
   <!-- ~Styles -->
   <link rel="stylesheet" href="styles/mainStyle.css">
+  <link rel="stylesheet" href="styles/gameLayoutStyle.css">
+  <link rel="stylesheet" href="styles/projectLayoutStyle.css">
   
   <!-- ~Scripts -->
   <script src="scripts/initializeVariables.js" defer></script>
@@ -26,35 +28,42 @@
     <!-- This is a header section that will show information about the player's state to the user  -->
     <!-- It will use flexbox to layout the info -->
     <div id="playerInformation">
-      <span class="display health"></span>
-      <span class="display weaponSelection"></span>
+      <span class="display health">Health</span>
+      <span class="display weaponSelection">
+        <div>Weapon1</div>
+        <div>Weapon2</div>
+        <div>Weapon3</div>
+      </span>
     </div>
     
     <!-- For sprites, I'll be using JS to set the img tag based on the class enemyType#. -->
     <!-- This class also servers as a marker for which AI to use. -->
     <div id="gameplayArea">
-      <!-- * All entities that can interact with each other will go in here -->
-      <div id="gameEntities">
-        <!-- Example entities -->
-        <!-- These will be generated and placed into the #gameEntities tag using js -->
-        <div class="entity player">
-          <img src="" alt="" class="sprite">
-          <div class="metaData placeholder"></div>
-        </div>
-        
-        <!-- For enemies -->
-        <div class="entity enemy enemyType0">
-          <img src="" alt="" class="sprite">
-          <div class="metaData placeholder"></div>
-        </div>
-      </div>
-      
       <!-- All visual stuff like the tile map will go here  -->
       <!-- Actual map information will be held in separate files and the HTML will be generated using JS. -->
       <!-- The tiles will be implemented using background-image, since I seem to be better at using those than img tags. -->
       <!-- * Map stuff goes here -->
       <div id="gameMap">
-        <span class="tile tileID0"></span> <!-- Example Tile -->
+        <span class="tile tileID0">T</span> <!-- Example Tile -->
+      </div>
+      
+      
+      <!-- * All entities that can interact with each other will go in here -->
+      <div id="gameEntities">
+        <!-- Example entities -->
+        <!-- These will be generated and placed into the #gameEntities tag using js -->
+        <div class="entity player">
+          <img src="" alt="#" class="sprite">
+          <div class="hitBox"></div>
+          <div class="hurtBox"></div>
+        </div>
+        
+        <!-- For enemies -->
+        <div class="entity enemy enemyType0">
+          <img src="" alt="#" class="sprite">
+          <div class="hitBox"></div>
+          <div class="hurtBox"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -64,9 +73,25 @@
   <!-- This will just be text tags (h1, h2, p, etc.) so I won't wireframe this out right now -->
   <!-- # Project Information which is under actual game -->
   <section id="project">
-    <header id=projectTitle></header>
-    <main id="projectDescription"></main>
-    <footer id="credits"></footer>
+    <header id=projectTitle>
+      <h1>Project Name</h1>
+    </header>
+    <main id="projectDescription">
+      <div class="descriptionSection">
+        <h3>Project Section</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus voluptatibus accusamus modi aperiam iusto deserunt accusantium aliquam cumque ex autem neque quisquam non quis possimus voluptate in, sit nihil assumenda.</p>
+      </div>
+      <div class="descriptionSection">
+        <h3>Project Section</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse provident maiores non ullam iure ipsa quis! Reiciendis, voluptatum alias! Reiciendis ad assumenda temporibus, dolorum mollitia asperiores ex odit voluptatem veritatis.</p>
+      </div>
+    </main>
+    <footer id="projectCredits">
+      <span class="credit">
+        <span class="creditResponsibility">Responsibility by: </span>
+        <a href="#" class="creditLink">Name</a>
+      </span>
+    </footer>
   </section>
 </body>
 </html>

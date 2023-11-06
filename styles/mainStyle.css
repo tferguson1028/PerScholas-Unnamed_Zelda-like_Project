@@ -1,0 +1,36 @@
+:root {
+  --tileSize: 32px;
+  --tilesX: 18;
+  --tilesY: 12;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* I want to do my own margins for everything */
+body * {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color:cornflowerblue;
+  /* border: 1px solid white; */
+}
+
+#game, #project
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100% ;
+  max-height: auto ;
+  margin: var(--tileSize) 0;
+  padding: 12px 8px;
+  
+  overflow: hidden;
+}
+
