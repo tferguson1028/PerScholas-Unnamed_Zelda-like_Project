@@ -16,7 +16,15 @@
   <!-- If you see any special characters in comments, I use them to color comments so that different sections are easier to find -->
   <!-- # Everything related to the game -->
   <section id="game">
-    <div id="playerInformation"></div>
+    <!-- 
+      * This is a header section that will show information about the player's state to the user 
+      * It will use flexbox to layout the info
+    -->
+    <div id="playerInformation">
+      <span class="display health"></span>
+      <span class="display weaponSelection"></span>
+    </div>
+    
     <div id="gameplayArea">
       <!-- * All entities that can interact with each other will go in here -->
       <div id="gameEntities">
@@ -28,13 +36,20 @@
         </div>
       </div>
       
-      <!-- * All visual stuff like the TileMap will go here -->
-      <div id="gameMap"></div>
+      <!-- 
+        * All visual stuff like the TileMap will go here 
+        * Actual map information will be held in separate files and 
+        * the HTML will be generated using JS. 
+      -->
+      <div id="gameMap">
+        <span class="tile tileID0"></span>
+      </div>
     </div>
   </section>
   
   <!-- # Project Information which is under actual game -->
   <!-- Since Semantic html helps screen readers, I'll use semantics for the project description -->
+  <!-- This will just be text tags (h1, h2, p, etc.) so I won't wireframe this out right now -->
   <section id="project">
     <header id=projectTitle></header>
     <main id="projectDescription"></main>
@@ -42,3 +57,10 @@
   </section>
 </body>
 </html>
+
+<!-- 
+  References for Dev:
+    Collision detection: https://stackoverflow.com/a/63419039
+    
+
+ -->
