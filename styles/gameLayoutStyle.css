@@ -24,6 +24,7 @@
 #game > #playerInformation {
   display: flex;
   height: calc(var(--tileSize) * 2);
+  background-color: chocolate;
 }
 
 #game > #playerInformation *

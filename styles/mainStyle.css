@@ -25,11 +25,14 @@ body * {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100% ;
-  max-height: auto ;
-  margin: var(--tileSize) 0;
+  min-height: 100%;
+  max-height: auto;
   padding: 12px 8px;
   
   overflow: hidden;
 }
 
+#project 
+{
+  margin-top: var(--tileSize);
+}
