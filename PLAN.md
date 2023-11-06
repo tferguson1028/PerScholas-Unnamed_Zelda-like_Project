@@ -4,6 +4,7 @@
 - Create an entire section that the game will be in.
 - Add a header which will serve as a section to display player information
 - Add a section for the game to be displayed in
+- Figure out how to make everything and what you'll need
 
 ### Step 2 - Tilemap CSS
 - Create a section where the map will display inside of 
