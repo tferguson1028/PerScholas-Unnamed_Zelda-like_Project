@@ -17,14 +17,18 @@
   <!-- # Everything related to the game -->
   <section id="game">
     <!-- 
-      * This is a header section that will show information about the player's state to the user 
-      * It will use flexbox to layout the info
+      ^ This is a header section that will show information about the player's state to the user 
+      ^ It will use flexbox to layout the info
     -->
     <div id="playerInformation">
       <span class="display health"></span>
       <span class="display weaponSelection"></span>
     </div>
     
+    <!-- 
+      For sprites, I'll be using JS to set the img tag based on the class enemyType#.
+      This class also servers as a marker for which AI to use.
+     -->
     <div id="gameplayArea">
       <!-- * All entities that can interact with each other will go in here -->
       <div id="gameEntities">
@@ -34,12 +38,18 @@
           <img src="" alt="" class="sprite">
           <div class="metaData placeholder"></div>
         </div>
+        
+        <!-- For enemies -->
+        <div class="entity enemy enemyType0">
+          <img src="" alt="" class="sprite">
+          <div class="metaData placeholder"></div>
+        </div>
       </div>
       
       <!-- 
-        * All visual stuff like the TileMap will go here 
-        * Actual map information will be held in separate files and 
-        * the HTML will be generated using JS. 
+        ^ All visual stuff like the tile map will go here 
+        ^ Actual map information will be held in separate files and 
+        ^ the HTML will be generated using JS. 
       -->
       <div id="gameMap">
         <span class="tile tileID0"></span>
