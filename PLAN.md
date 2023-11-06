@@ -46,13 +46,16 @@ Make this loop run at 60 FPS. Pass a delta var in the game loop.
 ### Step 8
 - Acquire/create assets
 - Apply sprites to all things.
+- Add GUI Elements
 
 <br>
 
 # Day 4
 
-### Step 9 - Animations :D
+### Step 9 - Animations and GUI Updating :D
 - Add animations to attacks
+- Update GUI based on player state
+- Entity gets attacked make it flash red
 
 <br> 
 
