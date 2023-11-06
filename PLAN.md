@@ -55,6 +55,7 @@ Make this loop run at 60 FPS. Pass a delta var in the game loop.
 
 ### Step 9 - Animations and GUI Updating :D
 - Add animations to attacks
+- Animate sprites
 - Update GUI based on player state
 - Entity gets attacked make it flash red
 

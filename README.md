@@ -19,14 +19,11 @@ the idea.
 Since it's relatively simple but requires me writing functionality that
 I haven't done before, I want to make it to learn how to do that.
 
-It will require a lot more DOM manipulation since I'll be dynamically adding and removing HTML elements.
-
-In addition to that, I will need to learn how to do:
+It will require a lot more DOM manipulation since I'll be dynamically adding and removing HTML elements and, in addition to that, I will need to learn how to do:
 - Collision detection, 
 - Frame-based input detection,
-- Hitbox-hurtbox detection, and 
+- Hitbox-hurtbox detection/interactions and 
 - Using keyframes for animations.
-
 
 ## Technologies
 - HTML
