@@ -76,11 +76,27 @@ class Entity
         thisCollider.bottom >= otherCollider.top
       )
     );
+    return result;
+  }
+  
+  isCompletelyOverlapping(other)
+  {
+    if(!(other instanceof Entity))
+    return false;
     
+    let thisCollider = this.getCollisionBox();
+    let otherCollider = other.getCollisionBox();
     
-    console.log(result);
-    
-    // I shortened the code
+    let result = (
+      (
+        thisCollider.left >= otherCollider.left &&
+        thisCollider.right <= otherCollider.right
+      ) &&
+      (
+        thisCollider.top >= otherCollider.top &&
+        thisCollider.bottom <= otherCollider.bottom
+      )
+    );
     return result;
   }
   
@@ -117,5 +133,13 @@ class Projectile extends Entity
     this.lifeTime = lifeTime;
     this.speedX = speedX;
     this.speedY = speedY;
+  }
+}
+
+class Force extends Entity
+{
+  constructor(htmlElement, initX, initY, sizeX, sizeY, forceX, forceY)
+  {
+    super(htmlElement, this.spriteSheet, initX, initY, sizeX, sizeY);
   }
 }
