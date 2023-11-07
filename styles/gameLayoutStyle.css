@@ -48,6 +48,7 @@
   min-height: calc(var(--tileSize) * var(--tilesY));
   max-height: calc(var(--tileSize) * var(--tilesY));
   background-color: #00aa00aa;
+  z-index: -5 !important;
   
   display: grid;
   grid-template: 

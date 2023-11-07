@@ -42,15 +42,10 @@ body * {
 {
   position: relative;
   padding-top: var(--tileSize);
-  z-index: 1000 !important;
+  z-index: 10 !important;
 }
 
-#project * 
-{ 
-  /* z-index: 1000 !important;  */
-}
-
-#game * 
+#game > * 
 {
   z-index: 1 !important;
 }
