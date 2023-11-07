@@ -17,18 +17,19 @@ class PlayerCharacter extends Actor
     let moveSpeed = this.speed*pixelSize*deltaTime;
     if(InputCatcher.isInputPressed('w'))
     {
-      this.yPos -= moveSpeed;
+      this.translate(0, -moveSpeed);
     }else if(InputCatcher.isInputPressed('s'))
     {
-      this.yPos += moveSpeed;
-    } 
+      this.translate(0, moveSpeed);
+    }
     
     if(InputCatcher.isInputPressed('a'))
     {
-      this.xPos -= moveSpeed;
+      this.translate(-moveSpeed, 0);
     }else if(InputCatcher.isInputPressed('d'))
     {
-      this.xPos += moveSpeed;
+      this.translate(moveSpeed, 0)
     }
+    
   }
 }
