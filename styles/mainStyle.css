@@ -1,5 +1,5 @@
 :root {
-  --tileSize: 56px;
+  --tileSize: 32px;
   --tilesX: 16;
   --tilesY: 10;
 }
