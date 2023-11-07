@@ -1,13 +1,14 @@
 class Entity
 {
-  constructor(htmlElement, spriteSheet, initX, initY, sizeX, sizeY)
+  constructor(htmlElement, spriteSheet, initX, initY)
   {
     this.linkedHTMLElement = htmlElement;
+    this.linkedHTMLElement.style.position = "absolute";
+    gameEntities.appendChild(this.linkedHTMLElement);
+    
     this.spriteSheet = spriteSheet;
     this.xPos = initX;
     this.yPos = initY;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
     
     this.spriteIndex = 0;
     
@@ -138,8 +139,27 @@ class Projectile extends Entity
 
 class Force extends Entity
 {
-  constructor(htmlElement, initX, initY, sizeX, sizeY, forceX, forceY)
+  constructor(htmlElement, initX, initY, forceX, forceY)
   {
-    super(htmlElement, this.spriteSheet, initX, initY, sizeX, sizeY);
+    super(htmlElement, null, initX, initY);
+    this.forceX = forceX;
+    this.forceY = forceY;
+    entityList.splice(entityList.indexOf(this));
+  }
+  
+  pushOut(other, deltaTime)
+  {
+    if(this.isColliding(other))
+    {
+      other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
+      console.log(5);
+    }
+  }
+  
+  repeatPushOut(other, deltaTime)
+  {
+    let timeout = 0;
+    while(timeout++ < 1000 && this.isColliding(other))
+      other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
   }
 }

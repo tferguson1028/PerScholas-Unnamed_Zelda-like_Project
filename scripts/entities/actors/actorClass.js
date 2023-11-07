@@ -3,9 +3,9 @@
  */
 class Actor extends Entity
 {
-  constructor(htmlElement, spriteSheet, initX, initY, sizeX, sizeY, name, health)
+  constructor(htmlElement, spriteSheet, initX, initY, name, health)
   {
-    super(htmlElement, spriteSheet, initX, initY, sizeX, sizeY);
+    super(htmlElement, spriteSheet, initX, initY);
     this.name = name;
     this.maxHealth = health;
     this.health = health;

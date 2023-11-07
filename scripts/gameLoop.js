@@ -1,4 +1,4 @@
-const maxFrames = 60;
+const maxFrames = 24; // Reducing for testing stuff, set to 60 when done.
 let currentFrame = 0;
 
 let runTimeSeconds = 0; // I used this for testing deltaTime
@@ -45,7 +45,15 @@ setInterval(() =>
  */
 function main(deltaTime)
 {
-  entityList.forEach(entity => entity.process(deltaTime));
+  entityList.forEach((entity) => 
+  {
+    entity.process(deltaTime)
+    for(let boundary in worldBoundary)
+    {
+      if(worldBoundary[boundary] instanceof Force)
+        worldBoundary[boundary].pushOut(entity, deltaTime);
+    }
+  });
 }
 
 /**
