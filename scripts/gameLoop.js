@@ -46,7 +46,6 @@ setInterval(() =>
 function main(deltaTime)
 {
   entityList.forEach(entity => entity.process(deltaTime));
-  // console.log(playerActor);
 }
 
 /**

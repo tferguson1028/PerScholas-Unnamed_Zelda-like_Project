@@ -43,7 +43,9 @@ class Entity
   update() 
   {
     if(typeof this.linkedHTMLElement !== "undefined")
+    {
       this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
+    }
   }
   
   destroy() 

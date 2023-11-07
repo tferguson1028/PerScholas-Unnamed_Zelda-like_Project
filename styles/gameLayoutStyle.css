@@ -70,7 +70,7 @@
   position: relative;
   
   /* Use translate to move */
-  translate: 0px 0px; 
+  /* translate: 0px 0px; */
   
   width: var(--tileSize) !important;
   height: var(--tileSize) !important;

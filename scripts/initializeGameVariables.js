@@ -1,1 +1,3 @@
-const playerActor = new PlayerCharacter();
+const playerActor = new PlayerCharacter(
+  document.querySelector(".player")
+);
