@@ -1,7 +1,7 @@
 :root {
   --tileSize: 32px;
-  --tilesX: 16;
-  --tilesY: 10;
+  --tilesX: 12;
+  --tilesY: 8;
 }
 
 html, body {
@@ -30,9 +30,25 @@ body * {
   padding: 12px 8px;
   
   overflow: hidden;
+  z-index: 0;
+  
+  /* border: 1px solid rebeccapurple; */
+  background-color: white;
 }
 
 #project 
 {
+  position: relative;
   margin-top: var(--tileSize);
+  z-index: 1000 !important;
+}
+
+#project * 
+{ 
+  /* z-index: 1000 !important;  */
+}
+
+#game * 
+{
+  z-index: 1 !important;
 }

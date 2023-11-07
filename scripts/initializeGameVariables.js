@@ -1,7 +1,4 @@
 //# Creating boundaries
-const gameMap = document.querySelector("#gameMap");
-const gameEntities = document.querySelector("#gameEntities");
-
 const worldBoundary = {
   left: undefined,
   right: undefined,
@@ -9,7 +6,7 @@ const worldBoundary = {
   bottom: undefined
 };
 
-const boundary = document.createElement("div");
+let boundary = document.createElement("div");
 boundary.classList.add("forceEntity");
 boundary.style.width = `${gameMap.getBoundingClientRect().width}px`;
 boundary.style.height = `${gameMap.getBoundingClientRect().height}px`;

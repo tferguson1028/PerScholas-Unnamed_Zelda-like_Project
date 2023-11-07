@@ -1,5 +1,5 @@
 .forceEntity
 {
-  border: 4px dotted red !important;
-  /* backgrounad-color: rebeccapurple !important; */
+  border: 2px dashed red !important;
+  background-color: #dd001133 !important;
 }

@@ -6,6 +6,8 @@ class Entity
     this.linkedHTMLElement.style.position = "absolute";
     gameEntities.appendChild(this.linkedHTMLElement);
     
+    this.linkedHTMLElement.style.zIndex = "-1";
+    
     this.spriteSheet = spriteSheet;
     this.xPos = initX;
     this.yPos = initY;
@@ -148,6 +150,7 @@ class Force extends Entity
     this.forceX = forceX;
     this.forceY = forceY;
     // entityList.splice(entityList.indexOf(this));
+    // this.linkedHTMLElement.style.zIndex = "-100";
   }
   
   pushOut(other, deltaTime)
@@ -155,7 +158,6 @@ class Force extends Entity
     if(this.isColliding(other))
     {
       other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
-      console.log(5);
     }
   }
   
