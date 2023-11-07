@@ -1,5 +1,17 @@
 .forceEntity
 {
-  border: 2px dashed red !important;
-  background-color: #dd001133 !important;
+  border: 2px dashed #00996655 !important;
+  background-color: #00dd1155 !important;
+}
+
+.hitbox, .projectile
+{
+  border: 1px dashed #ff005555 !important;
+  background-color: #99005555 !important;
+}
+
+.hurtbox
+{
+  border: 1px dashed #ff5b1355 !important;
+  background-color: #bb555555 !important;
 }

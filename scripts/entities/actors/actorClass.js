@@ -10,5 +10,18 @@ class Actor extends Entity
     this.maxHealth = health;
     this.health = health;
     this.direction = direction["N"];
+    
+    this.children = [];
+  }
+  
+  process(deltaTime) { this.children.forEach(child => child.process())};
+  
+  attachChild(entity)
+  {
+    if(!(entity instanceof Entity))
+      return;
+      
+    this.linkedHTMLElement.appendChild(entity.linkedHTMLElement);
+    this.children.push(entity);
   }
 }

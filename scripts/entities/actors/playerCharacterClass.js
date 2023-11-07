@@ -16,6 +16,7 @@ class PlayerCharacter extends Actor
   {
     this.doMovement(deltaTime);
     this.doAttack(deltaTime);
+    super.process(deltaTime);
   }
   
   doMovement(deltaTime)
