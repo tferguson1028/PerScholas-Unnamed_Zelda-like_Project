@@ -23,10 +23,10 @@ class PlayerCharacter extends Actor
     if(InputCatcher.isInputPressed('w'))
     {
       this.translate(0, -moveSpeed);
-      if(this.isColliding(worldBoundary))
+      if(!this.isColliding(worldBoundary))
       {
-        this.translate(0, 10);
-        console.log("COL");
+        this.translate(0, 100);
+        // console.log("COL");
       }
     }else if(InputCatcher.isInputPressed('s'))
     {

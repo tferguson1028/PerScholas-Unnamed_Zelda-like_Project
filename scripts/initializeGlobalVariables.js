@@ -1,5 +1,5 @@
 /// This script holds variables that are needed by other scripts.
-const pixelSize = 48;
+const pixelSize = 32;
 const entityList = [];
 
 //https://www.w3schools.com/css/css3_variables_javascript.asp

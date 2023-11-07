@@ -59,20 +59,29 @@ class Entity
   
   isColliding(other)
   {
-    // Used solution from https://stackoverflow.com/a/63419039
-    if(!other instanceof Entity)
+    // Used solution from https://stackoverflow.com/a/63419039 as reference
+    if(!(other instanceof Entity))
       return false;
     
     let thisCollider = this.getCollisionBox();
     let otherCollider = other.getCollisionBox();
     
-    // I shortened the code
-    return !(
-      thisCollider.left >= otherCollider.right || 
-      thisCollider.right >= otherCollider.left ||
-      thisCollider.top <= otherCollider.bottom ||
-      thisCollider.bottom <= otherCollider.top
+    let result = (
+      (
+        thisCollider.left <= otherCollider.right &&
+        thisCollider.right >= otherCollider.left
+      ) &&
+      (
+        thisCollider.top <= otherCollider.bottom &&
+        thisCollider.bottom >= otherCollider.top
+      )
     );
+    
+    
+    console.log(result);
+    
+    // I shortened the code
+    return result;
   }
   
 }
