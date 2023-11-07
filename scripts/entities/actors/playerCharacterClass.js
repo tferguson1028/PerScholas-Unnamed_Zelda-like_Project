@@ -2,7 +2,7 @@ class PlayerCharacter extends Actor
 {
   //Making static due to JS rules
   static spriteSheetPath = "assets/*";
-  speed = 32; // Moves speed pixels per second
+  speed = pixelSize*5; // Moves speed pixels per second
   constructor(htmlElement, initX = 0, initY = 0)
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, pixelSize, pixelSize)
@@ -19,11 +19,16 @@ class PlayerCharacter extends Actor
     {
       this.yPos -= this.speed*deltaTime;
     }else if(InputCatcher.isInputPressed('s'))
+    {
       this.yPos += this.speed*deltaTime;
-      
+    } 
+    
     if(InputCatcher.isInputPressed('a'))
+    {
       this.xPos -= this.speed*deltaTime;
-    else if(InputCatcher.isInputPressed('d'))
+    }else if(InputCatcher.isInputPressed('d'))
+    {
       this.xPos += this.speed*deltaTime;
+    }
   }
 }
