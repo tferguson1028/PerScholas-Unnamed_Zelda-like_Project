@@ -121,14 +121,24 @@ class Interactable extends Entity
  */
 class Projectile extends Entity
 {
-  lifeTime = 0;
-  speedX = 0;
-  speedY = 0;
-  owner = null;
+  constructor(spriteSheet, initX, initY, owner, sizeX, sizeY, damage = 0)
+  {
+    super(document.createElement("div"), spriteSheet, initX, initY);
+    this.linkedHTMLElement.classList.add("projectile");
+
+    this.owner = owner;
+    
+    this.sizeX = sizeX || this.linkedHTMLElement.getBoundingClientRect().width;
+    this.sizeY = sizeY || this.linkedHTMLElement.getBoundingClientRect().height;
+    this.damage = damage;
+    this.lifeTime = 0;
+    this.speedX = 0;
+    this.speedY = 0;
+  }
   
   process(deltaTime)
   {
-    if(this.lifeTime <= 0) { this.destroy(); return; }
+    if(this.lifeTime <= 0) { this.dispose(); return; }
     
     this.lifeTime -= deltaTime;
     this.translate(this.speedX*deltaTime, this.speedY*deltaTime);
@@ -142,6 +152,25 @@ class Projectile extends Entity
   }
 }
 
+class Hitbox extends Projectile
+{
+  constructor(initX, initY, owner, sizeX, sizeY, damage = 0, lifeTime = -1)
+  {
+    super(null, initX, initY, owner, sizeX, sizeY, damage);
+    this.lifeTime = lifeTime;
+    this.enabled = false;
+  }
+  
+  toggle(boolean = undefined)
+  {
+    // If the argument is set, then set enabled to the argument, else toggle it.
+    this.enabled = typeof boolean !== "undefined" ? Boolean(boolean) : !this.enabled; 
+  }
+}
+
+/**
+ * Applies movement to any entity currently colliding with it.
+ */
 class Force extends Entity
 {
   constructor(htmlElement, initX, initY, forceX, forceY)
