@@ -30,9 +30,9 @@ class InputCatcher
    * If already inputList, sets inputHold on same index to 1.
    * @param {String} inputCode 
    */
-  static catchInput(inputCode) 
+  static catchInput(input) 
   {
-    let index = this.inputList.indexOf(inputCode);
+    let index = this.inputList.indexOf(input);
     if(index === -1)
     {
       this.inputList.push(inputCode);
@@ -47,16 +47,22 @@ class InputCatcher
    * Sets inputHold at inputList index to 0.
    * @param {String} inputCode 
    */
-  static removeInput(inputCode) 
+  static removeInput(input) 
   {
     // Since we know an input has to be pressed to be in the catcher, we don't need to check beforehand.
-    this.inputHold[this.inputList.indexOf(inputCode)] = 0;
+    /* WONTFIX
+      Turns out there's a bug where isJustReleased() can return true before a press is done.
+      This happens because the eventListeners and update functions don't run synchronously.
+      This requires computer like reflexes and is impractical for any person to reproduce consistently,
+      and I like the bug so I'm keeping it this way :P 
+    */
+    this.inputHold[this.inputList.indexOf(input)] = 0;
   }
   
   /**
    * Returns if an input is being pressed or not.
    * @param {String} input 
-   * @returns boolean
+   * @returns Boolean
    */
   static isInputPressed(input) 
   { 
@@ -68,8 +74,8 @@ class InputCatcher
   
   /**
    * Returns the time an input has been held down.
-   * @param {String}} input 
-   * @returns number | boolean
+   * @param {String} input 
+   * @returns Number | Boolean
    */
   static isInputHeld(input) 
   {
@@ -82,7 +88,7 @@ class InputCatcher
   /**
    * Returns if an input is pressed this frame or not.
    * @param {String} input 
-   * @returns boolean
+   * @returns Boolean
    */
   static isInputJustPressed(input)
   { 
@@ -95,7 +101,7 @@ class InputCatcher
   /**
    * Returns is an input is released this frame or not.
    * @param {String} input 
-   * @returns boolean
+   * @returns Boolean
    */
   static isInputJustReleased(input)
   { 
