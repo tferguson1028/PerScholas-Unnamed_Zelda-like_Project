@@ -6,3 +6,16 @@ const gameEntities = document.querySelector("#gameEntities");
 
 //https://www.w3schools.com/css/css3_variables_javascript.asp
 document.querySelector(":root").style.setProperty("--tileSize", `${pixelSize}px`);
+
+// Used for actors
+const direction = 
+{
+  N: "north",
+  E: "east",
+  S: "south",
+  W: "west",
+  NE: "northeast",
+  SE: "southeast",
+  NW: "northwest",
+  SW: "southwest"
+};

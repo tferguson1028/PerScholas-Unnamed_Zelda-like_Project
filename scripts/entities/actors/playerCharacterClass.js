@@ -15,30 +15,52 @@ class PlayerCharacter extends Actor
   process(deltaTime)
   {
     this.doMovement(deltaTime);
+    this.doAttack(deltaTime);
   }
   
   doMovement(deltaTime)
   {
     let moveSpeed = this.speed*pixelSize*deltaTime;
-    if(InputCatcher.isInputPressed('w'))
-    {
-      this.translate(0, -moveSpeed);
-    }else if(InputCatcher.isInputPressed('s'))
-    {
-      this.translate(0, moveSpeed);
-    }
+    let prevDir = this.direction;
+    this.direction = "";
     
+    // Can only face cardinal directions, so replace
     if(InputCatcher.isInputPressed('a'))
     {
       this.translate(-moveSpeed, 0);
+      this.direction = direction.W;
     }else if(InputCatcher.isInputPressed('d'))
     {
       this.translate(moveSpeed, 0)
+      this.direction = direction.E;
     }
+    
+    if(InputCatcher.isInputPressed('w'))
+    {
+      this.translate(0, -moveSpeed);
+      this.direction = direction.N;
+    }else if(InputCatcher.isInputPressed('s'))
+    {
+      this.translate(0, moveSpeed);
+      this.direction = direction.S;
+    }
+    
+    
+    if(this.direction === "")
+      this.direction = prevDir;
   }
   
-  doWallCollision()
+  doAttack(deltaTime)
   {
-    // while()
+    if(InputCatcher.isInputJustPressed('k'))
+    {
+      switch(this.direction)
+      {
+        case direction.N: console.log("attackTo: " + this.direction); break;
+        case direction.S: console.log("attackTo: " + this.direction); break;
+        case direction.E: console.log("attackTo: " + this.direction); break;
+        case direction.W: console.log("attackTo: " + this.direction); break;
+      }
+    }
   }
 }

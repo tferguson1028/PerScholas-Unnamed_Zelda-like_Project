@@ -73,7 +73,7 @@
 .entity {
   position: relative;
   
-  /* Use translate to move */
+  /* Use translate for moving */
   /* translate: 0px 0px; */
   
   width: var(--tileSize) !important;
@@ -87,7 +87,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background-color: green; */
 }
 
 .entity > .hitBox, .entity > .hurtBox

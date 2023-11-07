@@ -9,5 +9,6 @@ class Actor extends Entity
     this.name = name;
     this.maxHealth = health;
     this.health = health;
+    this.direction = direction["N"];
   }
 }

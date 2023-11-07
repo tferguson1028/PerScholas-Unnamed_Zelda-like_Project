@@ -1,7 +1,7 @@
 :root {
   --tileSize: 32px;
-  --tilesX: 12;
-  --tilesY: 8;
+  --tilesX: 16;
+  --tilesY: 10;
 }
 
 html, body {
@@ -9,6 +9,12 @@ html, body {
   padding: 0;
   width: 100% !important;
   height: 100% !important;
+}
+
+body
+{
+  overflow-x: clip;
+  overflow-y: auto;
 }
 
 /* I want to do my own margins for everything */
@@ -28,18 +34,14 @@ body * {
   min-height: 100%;
   max-height: auto;
   padding: 12px 8px;
-  
-  overflow: hidden;
   z-index: 0;
-  
-  /* border: 1px solid rebeccapurple; */
   background-color: white;
 }
 
 #project 
 {
   position: relative;
-  margin-top: var(--tileSize);
+  padding-top: var(--tileSize);
   z-index: 1000 !important;
 }
 
