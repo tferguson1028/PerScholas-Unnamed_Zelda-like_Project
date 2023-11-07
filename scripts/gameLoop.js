@@ -51,7 +51,7 @@ function main(deltaTime)
     for(let boundary in worldBoundary)
     {
       if(worldBoundary[boundary] instanceof Force)
-        worldBoundary[boundary].repeatPushOut(entity, deltaTime);
+        worldBoundary[boundary].pushAsBoundary(entity, deltaTime);
     }
   });
 }

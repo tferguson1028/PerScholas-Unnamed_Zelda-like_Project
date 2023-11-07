@@ -161,7 +161,7 @@ class Force extends Entity
     }
   }
   
-  repeatPushOut(other, deltaTime)
+  pushAsBoundary(other, deltaTime)
   {
     let timeout = 0;
     while(++timeout < 1000 && this.isColliding(other))
