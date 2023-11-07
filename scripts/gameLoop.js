@@ -18,13 +18,24 @@ setInterval(() =>
     currentFrame = (currentFrame+1)%maxFrames;
     runTimeSeconds += deltaTime;
     
-    // InputCatcher.update(deltaTime);    
     if(!paused)
     {
+      if(InputCatcher.isInputJustPressed('`'))
+        console.log("Pressed");
+        
+      if(InputCatcher.isInputHeld('`') > 1)
+        console.log("Held");
+        
+      if(InputCatcher.isInputJustReleased('`'))
+        console.log("Released");
+        
       main(deltaTime);
       update();
       ui();
     }
+    
+    // Updating input catcher after running logic allows for just pressed and just released to function
+    InputCatcher.update(deltaTime);
   },
   1000/maxFrames // This function runs maxFrames every second
 );

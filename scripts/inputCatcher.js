@@ -1,6 +1,8 @@
 /**
  * Functions as a static class which holds all current key/mouse
  * inputs made by the user.
+ * I'm doing this because JS event listeners catch hold inputs
+ * as if you're typing, making them unusable as hold keys in games.
  */
  
 // I making this myself. I've done it before, just not in JS
@@ -9,54 +11,129 @@ class InputCatcher
   static inputList = [];
   static inputHold = [];
 
-  static update(deltaTime) {}
+  /**
+   * Increases input hold every cycle
+   * @param {Number} deltaTime 
+   */
+  static update(deltaTime) 
+  {
+    for(let i = 0; i < this.inputHold.length; i++)
+    {
+      this.inputHold[i] = this.inputHold[i] >= 1 ? this.inputHold[i] + deltaTime : -1;
+    } 
+    // console.log(this.inputList);
+    // console.log(this.inputHold);
+  }
 
-  static catchInput(inputCode) {}
-  static removeInput(inputCode) {}
+  /**
+   * Adds input to inputList and 1 to inputHold. 
+   * If already inputList, sets inputHold on same index to 1.
+   * @param {String} inputCode 
+   */
+  static catchInput(inputCode) 
+  {
+    let index = this.inputList.indexOf(inputCode);
+    if(index === -1)
+    {
+      this.inputList.push(inputCode);
+      this.inputHold.push(1);
+    }else if(this.inputHold[index] < 1)
+    {
+      this.inputHold[index] = 1;
+    }
+  }
   
   /**
-   * Returns if an input is being pressed or not
-   * @param {*} input 
+   * Sets inputHold at inputList index to 0.
+   * @param {String} inputCode 
+   */
+  static removeInput(inputCode) 
+  {
+    // Since we know an input has to be pressed to be in the catcher, we don't need to check beforehand.
+    this.inputHold[this.inputList.indexOf(inputCode)] = 0;
+  }
+  
+  /**
+   * Returns if an input is being pressed or not.
+   * @param {String} input 
    * @returns boolean
    */
-  static isInputPressed(input) { return bool; }
+  static isInputPressed(input) 
+  { 
+    let index = this.getInputIndex(input);
+    if(index !== -1)
+      return Boolean(this.inputHold[index]);
+    return false;
+  }
   
   /**
-   * Returns the time an input has been held down
-   * @param {*} input 
+   * Returns the time an input has been held down.
+   * @param {String}} input 
    * @returns number | boolean
    */
-  static isInputHeld(input) { return number; }
+  static isInputHeld(input) 
+  {
+    let index = this.getInputIndex(input);
+    if(index !== -1)
+      return this.inputHold[index];
+    return false;
+  }
   
   /**
-   * Returns if an input is pressed this frame or not
-   * @param {*} input 
+   * Returns if an input is pressed this frame or not.
+   * @param {String} input 
    * @returns boolean
    */
-  static isInputJustPressed(input) { return bool; }
+  static isInputJustPressed(input)
+  { 
+    let index = this.getInputIndex(input);
+    if(index !== -1)
+      return this.inputHold[index] === 1;
+    return false;  
+  }
   
   /**
-   * Returns is an input is released this frame or not
-   * @param {*} input 
+   * Returns is an input is released this frame or not.
+   * @param {String} input 
    * @returns boolean
    */
-  static isInputJustReleased(input) { return bool; }  
+  static isInputJustReleased(input)
+  { 
+    let index = this.getInputIndex(input);
+    if(index !== -1)
+      return this.inputHold[index] === 0;
+    return false;  
+  }
+  
+  /**
+   * Returns the index of an input. If no index is found, returns -1
+   * @param {String} input 
+   * @returns Number
+   */
+  static getInputIndex(input)
+  {
+    let index = this.inputList.indexOf("Key_"+input);
+    index = index === -1 ? this.inputList.indexOf("Mouse_"+input) : index;
+    return index;
+  }
 }
 
 //# Input listening
 
-document.addEventListener("keydown", (event) => InputCatcher.catchInput(event.key));
-document.addEventListener("keyup", (event) => InputCatcher.removeInput(event.key));
+document.addEventListener("keydown", (event) => InputCatcher.catchInput("Key_"+event.key.toLowerCase()));
+document.addEventListener("keyup", (event) => InputCatcher.removeInput("Key_"+event.key.toLowerCase()));
 
-document.addEventListener("mousedown", (event) => InputCatcher.catchInput(event.key));
-document.addEventListener("mouseup", (event) => InputCatcher.removeInput(event.key));
+document.addEventListener("mousedown", (event) => InputCatcher.catchInput("Mouse_"+event.button));
+document.addEventListener("mouseup", (event) => InputCatcher.removeInput("Mouse_"+event.button));
 
 /* The way it works
   
   1. We attach EventListeners for possible inputs to the document, each calling a catch/remove input function.
   2. Add the input to the inputList array and place a 1 in it's identical position within the inputHold array.
-  3. On update(), add deltaTime to each inputHold that is greater than or equal to 1, to determine how long the button haas been held.
-  4. When an input is released, set the inputHold of the input's identical position in inputList to 0;
+  3. When an input is released, set the inputHold of the input's identical position in inputList to 0;
+  4. On update(), 
+    - add deltaTime to each inputHold that is greater than or equal to 1, to determine how long the button haas been held.
+    - set any 0 inputHold values to -1, which gives functionality to just released. 
 
   This gives us 3 states
     - Just pressed
