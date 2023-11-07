@@ -10,6 +10,8 @@ class Entity
     this.sizeY = sizeY;
     
     this.spriteIndex = 0;
+    
+    entityList.push(this);
   }
   
   /**
@@ -28,7 +30,7 @@ class Entity
     // https://stackoverflow.com/a/63419039
     return this.linkedHTMLElement.getBoundingClientRect();
   }
-  
+    
   /**
    * Holds logic for updating entities. Is empty in base entity class.
    * @param {Number} deltaTime 
@@ -40,8 +42,16 @@ class Entity
    */
   update() 
   {
-    this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
+    if(typeof this.linkedHTMLElement !== "undefined")
+      this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
   }
+  
+  destroy() 
+  {
+    htmlElement.remove();
+    // this = null;
+  }
+  
 }
 
 class Interactable extends Entity
@@ -75,21 +85,5 @@ class Projectile extends Entity
     this.lifeTime = lifeTime;
     this.speedX = speedX;
     this.speedY = speedY;
-  }
-  
-  destroy() {}
-}
-
-
-/**
- * These are entities that are controllable. 
- */
-class Actor extends Entity
-{
-  constructor(htmlElement, spriteSheet, initX, initY, sizeX, sizeY, health)
-  {
-    super(htmlElement, spriteSheet, initX, initY, sizeX, sizeY);
-    this.maxHealth = health;
-    this.health = health;
   }
 }

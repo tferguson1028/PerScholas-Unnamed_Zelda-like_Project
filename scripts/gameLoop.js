@@ -5,7 +5,6 @@ let runTimeSeconds = 0; // I used this for testing deltaTime
 let lastFrameTime = 0;
 
 let paused = false;
-const entityList = [];
 
 setInterval(() => 
   {
@@ -46,7 +45,8 @@ setInterval(() =>
  */
 function main(deltaTime)
 {
-  
+  entityList.forEach(entity => entity.process(deltaTime));
+  // console.log(playerActor);
 }
 
 /**

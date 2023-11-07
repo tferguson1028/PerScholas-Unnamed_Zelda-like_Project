@@ -6,8 +6,9 @@ Right now I'm making a single section of the full
 dungeon, but later I want to make the entire
 dungeon structure that I had designed.
 
-The goal (for now) is to clear rooms in the dungeon and get the the
-MacGuffin at the end.
+The goal (for now) is to clear rooms in the dungeon and get the the MacGuffin at the end.
+
+Throughout the dungeon there will be enemies that you must defeat to continue towards the MacGuffin.
 
 ## Motivation
 

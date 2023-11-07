@@ -35,7 +35,7 @@ class InputCatcher
     let index = this.inputList.indexOf(input);
     if(index === -1)
     {
-      this.inputList.push(inputCode);
+      this.inputList.push(input);
       this.inputHold.push(1);
     }else if(this.inputHold[index] < 1)
     {
@@ -68,7 +68,7 @@ class InputCatcher
   { 
     let index = this.getInputIndex(input);
     if(index !== -1)
-      return Boolean(this.inputHold[index]);
+      return this.inputHold[index] > 0;
     return false;
   }
   
