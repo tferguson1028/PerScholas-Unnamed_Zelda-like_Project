@@ -55,6 +55,10 @@
     repeat(var(--tilesX), var(--tileSize));
 }
 
+#game > #gameplayArea > #gameEntities {
+  position: absolute;
+}
+
 .tile
 {
   position: relative;
