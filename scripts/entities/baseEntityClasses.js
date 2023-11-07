@@ -54,6 +54,9 @@ class Entity
   
   getCollisionBox()
   {
+    // This makes collision work
+    this.update();
+
     // https://stackoverflow.com/a/63419039
     return this.linkedHTMLElement.getBoundingClientRect();
   }
@@ -61,7 +64,7 @@ class Entity
   isColliding(other)
   {
     // Used solution from https://stackoverflow.com/a/63419039 as reference
-    if(!(other instanceof Entity))
+    if(!(other instanceof Entity) || this === other)
       return false;
     
     let thisCollider = this.getCollisionBox();
@@ -144,7 +147,7 @@ class Force extends Entity
     super(htmlElement, null, initX, initY);
     this.forceX = forceX;
     this.forceY = forceY;
-    entityList.splice(entityList.indexOf(this));
+    // entityList.splice(entityList.indexOf(this));
   }
   
   pushOut(other, deltaTime)
@@ -159,7 +162,7 @@ class Force extends Entity
   repeatPushOut(other, deltaTime)
   {
     let timeout = 0;
-    while(timeout++ < 1000 && this.isColliding(other))
+    while(++timeout < 1000 && this.isColliding(other))
       other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
   }
 }

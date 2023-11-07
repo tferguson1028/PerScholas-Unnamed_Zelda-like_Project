@@ -2,7 +2,7 @@ class PlayerCharacter extends Actor
 {
   //Making static due to JS rules
   static spriteSheetPath = "assets/*";
-  speed = 4;
+  speed = 20;
   constructor(htmlElement, initX = 0, initY = 0)
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, pixelSize, pixelSize)
