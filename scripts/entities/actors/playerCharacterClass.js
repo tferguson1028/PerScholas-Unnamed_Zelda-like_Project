@@ -19,26 +19,13 @@ class PlayerCharacter extends Actor
   
   doMovement(deltaTime)
   {
-    let terminate = 0;
     let moveSpeed = this.speed*pixelSize*deltaTime;
     if(InputCatcher.isInputPressed('w'))
     {
       this.translate(0, -moveSpeed);
-      while(terminate < 256 && !this.isCompletelyOverlapping(worldBoundary))
-      {
-        terminate++;
-        this.translate(0, moveSpeed);
-        this.update();
-      }
     }else if(InputCatcher.isInputPressed('s'))
     {
       this.translate(0, moveSpeed);
-      while(terminate < 256 && !this.isCompletelyOverlapping(worldBoundary))
-      {
-        terminate++;
-        this.translate(0, -moveSpeed);
-        this.update();
-      }
     }
     
     if(InputCatcher.isInputPressed('a'))
