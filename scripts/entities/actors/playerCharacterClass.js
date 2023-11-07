@@ -2,7 +2,7 @@ class PlayerCharacter extends Actor
 {
   //Making static due to JS rules
   static spriteSheetPath = "assets/*";
-  speed = pixelSize*5; // Moves speed pixels per second
+  speed = 4;
   constructor(htmlElement, initX = 0, initY = 0)
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, pixelSize, pixelSize)
@@ -14,21 +14,21 @@ class PlayerCharacter extends Actor
    */
   process(deltaTime)
   {
-    // console.log(this.getCollisionBox());
+    let moveSpeed = this.speed*pixelSize*deltaTime;
     if(InputCatcher.isInputPressed('w'))
     {
-      this.yPos -= this.speed*deltaTime;
+      this.yPos -= moveSpeed;
     }else if(InputCatcher.isInputPressed('s'))
     {
-      this.yPos += this.speed*deltaTime;
+      this.yPos += moveSpeed;
     } 
     
     if(InputCatcher.isInputPressed('a'))
     {
-      this.xPos -= this.speed*deltaTime;
+      this.xPos -= moveSpeed;
     }else if(InputCatcher.isInputPressed('d'))
     {
-      this.xPos += this.speed*deltaTime;
+      this.xPos += moveSpeed;
     }
   }
 }
