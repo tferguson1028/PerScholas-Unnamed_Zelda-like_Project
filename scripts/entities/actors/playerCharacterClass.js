@@ -14,10 +14,20 @@ class PlayerCharacter extends Actor
    */
   process(deltaTime)
   {
+    this.doMovement(deltaTime);
+  }
+  
+  doMovement(deltaTime)
+  {
     let moveSpeed = this.speed*pixelSize*deltaTime;
     if(InputCatcher.isInputPressed('w'))
     {
       this.translate(0, -moveSpeed);
+      if(this.isColliding(worldBoundary))
+      {
+        this.translate(0, 10);
+        console.log("COL");
+      }
     }else if(InputCatcher.isInputPressed('s'))
     {
       this.translate(0, moveSpeed);
@@ -30,6 +40,10 @@ class PlayerCharacter extends Actor
     {
       this.translate(moveSpeed, 0)
     }
-    
+  }
+  
+  doWallCollision()
+  {
+    // while()
   }
 }

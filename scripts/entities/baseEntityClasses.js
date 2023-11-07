@@ -24,12 +24,6 @@ class Entity
     this.xPos += Number(deltaX);
     this.yPos += Number(deltaY);
   }
-  
-  getCollisionBox()
-  {
-    // https://stackoverflow.com/a/63419039
-    return this.linkedHTMLElement.getBoundingClientRect();
-  }
     
   /**
    * Holds logic for updating entities. Is empty in base entity class.
@@ -48,10 +42,37 @@ class Entity
     }
   }
   
-  destroy() 
+  /**
+   * Sets an object up for garbage collection.
+   */
+  dispose()
   {
-    htmlElement.remove();
-    // this = null;
+    this.linkedHTMLElement.remove();
+    delete this;
+  }
+  
+  getCollisionBox()
+  {
+    // https://stackoverflow.com/a/63419039
+    return this.linkedHTMLElement.getBoundingClientRect();
+  }
+  
+  isColliding(other)
+  {
+    // Used solution from https://stackoverflow.com/a/63419039
+    if(!other instanceof Entity)
+      return false;
+    
+    let thisCollider = this.getCollisionBox();
+    let otherCollider = other.getCollisionBox();
+    
+    // I shortened the code
+    return !(
+      thisCollider.left >= otherCollider.right || 
+      thisCollider.right >= otherCollider.left ||
+      thisCollider.top <= otherCollider.bottom ||
+      thisCollider.bottom <= otherCollider.top
+    );
   }
   
 }
