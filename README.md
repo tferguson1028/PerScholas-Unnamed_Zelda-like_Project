@@ -1,4 +1,4 @@
-# NoteVenture
+# Zelda Inspired Game
 
 This project will be a game similar to the older, top-down "The Legend of Zelda" games.
 
