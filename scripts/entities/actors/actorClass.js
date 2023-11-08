@@ -14,14 +14,21 @@ class Actor extends Entity
     this.children = [];
   }
   
-  process(deltaTime) { this.children.forEach(child => child.process())};
+  process(deltaTime) { this.children.forEach(child => child.process(deltaTime)); }
   
   attachChild(entity)
   {
     if(!(entity instanceof Entity))
       return;
-      
+    
     this.linkedHTMLElement.appendChild(entity.linkedHTMLElement);
     this.children.push(entity);
   }
+  
+  // Not needed, children are appended as children of this node, so their positions are relative to this
+  // translate(deltaX = 0, deltaY = 0)
+  // {
+  //   super.translate(deltaX, deltaY);
+  //   this.children.forEach(child => child.translate(deltaX, deltaY));
+  // }
 }

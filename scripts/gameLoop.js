@@ -47,7 +47,7 @@ function main(deltaTime)
 {
   entityList.forEach((entity) => 
   {
-    entity.process(deltaTime)
+    entity.processEntity(deltaTime);
     for(let boundary in worldBoundary)
     {
       if(worldBoundary[boundary] instanceof Force)

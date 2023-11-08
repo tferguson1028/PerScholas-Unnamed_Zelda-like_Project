@@ -6,8 +6,9 @@
 
 .hitbox, .projectile
 {
-  border: 1px dashed #ff005555 !important;
-  background-color: #99005555 !important;
+  border: 1px dashed #ff0055 !important;
+  background-color: #990055 !important;
+  z-index: 10;
 }
 
 .hurtbox

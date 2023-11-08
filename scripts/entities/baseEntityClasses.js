@@ -1,3 +1,6 @@
+/**
+ * Base class for all objects use in the game
+ */
 class Entity
 {
   constructor(htmlElement, spriteSheet, initX, initY)
@@ -5,31 +8,35 @@ class Entity
     this.linkedHTMLElement = htmlElement;
     this.linkedHTMLElement.style.position = "absolute";
     gameEntities.appendChild(this.linkedHTMLElement);
-    
     this.linkedHTMLElement.style.zIndex = "-1";
     
     this.spriteSheet = spriteSheet;
-    this.xPos = initX;
-    this.yPos = initY;
+    this.xPos = Number(initX);
+    this.yPos = Number(initY);
     
     this.spriteIndex = 0;
-    
-    entityList.push(this);
+    this.enabled = true;
+        
+    entityList.unshift(this); // unshift() works better in gameplay than push().
   }
   
   /**
-   * Moves the internal position by given arguments.
-   * @param {Number} deltaX 
-   * @param {Number} deltaY 
+   * A "final" function that is used by the gameLoop.js script to process
+   * It is used for enabling and disabling instances of Entity and allows
+   * process() to be changed by inheriting classes without having to rewrite
+   * this in other places.
+   * @param {*} deltaTime 
+   * @returns 
    */
-  translate(deltaX = 0, deltaY = 0)
-  {
-    this.xPos += Number(deltaX);
-    this.yPos += Number(deltaY);
+  processEntity(deltaTime) 
+  { 
+    if(this.enabled)
+      this.process(deltaTime);
   }
-    
+  
   /**
    * Holds logic for updating entities. Is empty in base entity class.
+   * Expected to be overridden in derived classes.
    * @param {Number} deltaTime 
    */
   process(deltaTime) {}
@@ -41,6 +48,8 @@ class Entity
   {
     if(typeof this.linkedHTMLElement !== "undefined")
     {
+      // this.linkedHTMLElement.style.top = `${this.yPos}px`;
+      // this.linkedHTMLElement.style.left = `${this.xPos}px`;
       this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
     }
   }
@@ -52,6 +61,17 @@ class Entity
   {
     this.linkedHTMLElement.remove();
     delete this;
+  }
+  
+  /**
+   * Moves the internal position by given arguments.
+   * @param {Number} deltaX 
+   * @param {Number} deltaY 
+   */
+  translate(deltaX = 0, deltaY = 0)
+  {
+    this.xPos += Number(deltaX);
+    this.yPos += Number(deltaY);
   }
   
   getCollisionBox()
@@ -106,94 +126,4 @@ class Entity
     return result;
   }
   
-}
-
-class Interactable extends Entity
-{
-  
-}
-
-/**
- * These are used to create attacks and damage. 
- * All hitboxes should be projectile class.
- * They will persist until their lifetime is over, then it will
- * delete itself.
- */
-class Projectile extends Entity
-{
-  constructor(spriteSheet, initX, initY, owner, sizeX, sizeY, damage = 0)
-  {
-    super(document.createElement("div"), spriteSheet, initX, initY);
-    this.linkedHTMLElement.classList.add("projectile");
-
-    this.owner = owner;
-    
-    this.sizeX = sizeX || this.linkedHTMLElement.getBoundingClientRect().width;
-    this.sizeY = sizeY || this.linkedHTMLElement.getBoundingClientRect().height;
-    this.damage = damage;
-    this.lifeTime = 0;
-    this.speedX = 0;
-    this.speedY = 0;
-  }
-  
-  process(deltaTime)
-  {
-    if(this.lifeTime <= 0) { this.dispose(); return; }
-    
-    this.lifeTime -= deltaTime;
-    this.translate(this.speedX*deltaTime, this.speedY*deltaTime);
-  }
-  
-  startTraverse(speedX, speedY, lifeTime)
-  {
-    this.lifeTime = lifeTime;
-    this.speedX = speedX;
-    this.speedY = speedY;
-  }
-}
-
-class Hitbox extends Projectile
-{
-  constructor(initX, initY, owner, sizeX, sizeY, damage = 0, lifeTime = -1)
-  {
-    super(null, initX, initY, owner, sizeX, sizeY, damage);
-    this.lifeTime = lifeTime;
-    this.enabled = false;
-  }
-  
-  toggle(boolean = undefined)
-  {
-    // If the argument is set, then set enabled to the argument, else toggle it.
-    this.enabled = typeof boolean !== "undefined" ? Boolean(boolean) : !this.enabled; 
-  }
-}
-
-/**
- * Applies movement to any entity currently colliding with it.
- */
-class Force extends Entity
-{
-  constructor(htmlElement, initX, initY, forceX, forceY)
-  {
-    super(htmlElement, null, initX, initY);
-    this.forceX = forceX;
-    this.forceY = forceY;
-    // entityList.splice(entityList.indexOf(this));
-    // this.linkedHTMLElement.style.zIndex = "-100";
-  }
-  
-  pushOut(other, deltaTime)
-  {
-    if(this.isColliding(other))
-    {
-      other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
-    }
-  }
-  
-  pushAsBoundary(other, deltaTime)
-  {
-    let timeout = 0;
-    while(++timeout < 1000 && this.isColliding(other))
-      other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
-  }
 }
