@@ -25,6 +25,8 @@ class Force extends Entity
   
   pushOut(other, deltaTime)
   {
+    if(!(other instanceof Actor))
+      return;
     if(this.isColliding(other))
     {
       other.translate(this.forceX*pixelSize*deltaTime, this.forceY*pixelSize*deltaTime);
@@ -33,6 +35,8 @@ class Force extends Entity
   
   pushAsBoundary(other, deltaTime)
   {
+    if(!(other instanceof Actor))
+      return;
     let timeout = 0;
     while(++timeout < 1000 && this.isColliding(other))
       other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
