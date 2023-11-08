@@ -105,7 +105,8 @@ class PlayerCharacter extends Actor
   }
   
   keyPriority(key1, key2)
-  { 
+  {
+    // Returns oldest keypress
     if(InputCatcher.isInputPressed(key1) || InputCatcher.isInputPressed(key2))
     {
       let key1Hold = InputCatcher.isInputHeld(key1);
