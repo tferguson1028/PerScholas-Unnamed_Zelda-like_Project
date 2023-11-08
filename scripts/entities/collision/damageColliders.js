@@ -6,15 +6,15 @@
  */
 class Projectile extends Entity
 {
-  constructor(spriteSheet, initX, initY, owner, sizeX, sizeY, damage = 0)
+  constructor(spriteSheet, initX, initY, owner, scaleX, scaleY, damage = 0)
   {
     super(document.createElement("div"), spriteSheet, initX, initY);
     this.linkedHTMLElement.classList.add("projectile");
 
     this.owner = owner;
     
-    this.sizeX = sizeX || this.linkedHTMLElement.getBoundingClientRect().width;
-    this.sizeY = sizeY || this.linkedHTMLElement.getBoundingClientRect().height;
+    this.scaleX = scaleX || this.linkedHTMLElement.getBoundingClientRect().width;
+    this.scaleY = scaleY || this.linkedHTMLElement.getBoundingClientRect().height;
     this.damage = damage;
     this.lifeTime = 0;
     this.speedX = 0;
@@ -23,9 +23,14 @@ class Projectile extends Entity
   
   process(deltaTime)
   {
-    if(this.lifeTime <= 0) { this.dispose(); return; }
+    if(this.lifeTime <= 0) 
+    { 
+      if(this.lifeTime !== null) this.dispose(); 
+      return; 
+    }
     
-    this.lifeTime -= deltaTime;
+    // If lifeTime is null, do nothing, else subtract it by deltaTime
+    this.lifeTime = typeof this.lifeTime === null ? null : this.lifeTime - deltaTime;
     this.translate(this.speedX*deltaTime, this.speedY*deltaTime);
   }
   
@@ -41,11 +46,15 @@ class Interactable extends Projectile
 {
 }
 
+/**
+ * Realizing that this class is kinda useless since Projectile has all the same functionality
+ * and I'm just removing functionality to make this different
+ */
 class Hitbox extends Projectile
 {
-  constructor(initX, initY, owner, sizeX, sizeY, damage = 0, lifeTime = -1)
+  constructor(initX, initY, owner, scaleX, scaleY, damage = 0, lifeTime = null)
   {
-    super(null, initX, initY, owner, sizeX, sizeY, damage);
+    super(null, initX, initY, owner, scaleX, scaleY, damage);
     this.lifeTime = lifeTime;
   }
 }

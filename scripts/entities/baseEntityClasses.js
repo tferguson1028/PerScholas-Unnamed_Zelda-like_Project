@@ -13,6 +13,8 @@ class Entity
     this.spriteSheet = spriteSheet;
     this.xPos = Number(initX);
     this.yPos = Number(initY);
+    this.scaleX = 1;
+    this.scaleY = 1;
     
     this.spriteIndex = 0;
     this.enabled = true;
@@ -51,6 +53,7 @@ class Entity
       // this.linkedHTMLElement.style.top = `${this.yPos}px`;
       // this.linkedHTMLElement.style.left = `${this.xPos}px`;
       this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
+      this.linkedHTMLElement.style.scale = `${this.scaleX} ${this.scaleY}`;
     }
   }
   
@@ -59,8 +62,10 @@ class Entity
    */
   dispose()
   {
+    // https://stackoverflow.com/a/10314492
+    console.log(`Disposing ${this.constructor.name}`);
     this.linkedHTMLElement.remove();
-    delete this;
+    delete this; // Found out that this doesn't do anything and is basically ignored at runtime.
   }
   
   /**
