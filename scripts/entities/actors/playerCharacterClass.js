@@ -33,21 +33,29 @@ class PlayerCharacter extends Actor
       case direction.N:
         this.forceHitbox.xPos = 0;
         this.forceHitbox.yPos = -(pixelSize+2);
+        this.attackHitbox.xPos = 0;
+        this.attackHitbox.yPos = -(pixelSize+2);
         break;
         
       case direction.E:
         this.forceHitbox.xPos = (pixelSize+2);
         this.forceHitbox.yPos = 0;
+        this.attackHitbox.xPos = (pixelSize+2);
+        this.attackHitbox.yPos = 0;
         break;
         
       case direction.S:
         this.forceHitbox.xPos = 0;
         this.forceHitbox.yPos = (pixelSize+2);
+        this.attackHitbox.xPos = 0;
+        this.attackHitbox.yPos = (pixelSize+2);
         break;
         
       case direction.W:
         this.forceHitbox.xPos = -(pixelSize+2);
         this.forceHitbox.yPos = 0;
+        this.attackHitbox.xPos = -(pixelSize+2);
+        this.attackHitbox.yPos = 0;
         break;
     }
   }
@@ -58,17 +66,7 @@ class PlayerCharacter extends Actor
     let prevDir = this.direction;
     this.direction = "";
     
-    // Can only face cardinal directions, so replace
-    if(InputCatcher.isInputPressed('a'))
-    {
-      this.translate(-moveSpeed, 0);
-      this.direction = direction.W;
-    }else if(InputCatcher.isInputPressed('d'))
-    {
-      this.translate(moveSpeed, 0)
-      this.direction = direction.E;
-    }
-    
+    // I only want player to face cardinal directions, so replace
     if(InputCatcher.isInputPressed('w'))
     {
       this.translate(0, -moveSpeed);
@@ -79,6 +77,15 @@ class PlayerCharacter extends Actor
       this.direction = direction.S;
     }
     
+    if(InputCatcher.isInputPressed('a'))
+    {
+      this.translate(-moveSpeed, 0);
+      this.direction = direction.W;
+    }else if(InputCatcher.isInputPressed('d'))
+    {
+      this.translate(moveSpeed, 0)
+      this.direction = direction.E;
+    }
     
     if(this.direction === "")
       this.direction = prevDir;
@@ -88,13 +95,14 @@ class PlayerCharacter extends Actor
   {
     if(InputCatcher.isInputJustPressed('k'))
     {
-      switch(this.direction)
-      {
-        case direction.N: console.log("attackTo: " + this.direction); break;
-        case direction.S: console.log("attackTo: " + this.direction); break;
-        case direction.E: console.log("attackTo: " + this.direction); break;
-        case direction.W: console.log("attackTo: " + this.direction); break;
-      }
+      this.attackHitbox.enabled = true;
+      this.forceHitbox.enabled = true;
+      setTimeout(() => {
+        this.attackHitbox.enabled = false;
+        this.forceHitbox.enabled = false;
+      },
+        200
+      );
     }
   }
 }
