@@ -17,7 +17,7 @@ class Entity
     this.spriteIndex = 0;
     this.enabled = true;
         
-    entityList.unshift(this); // unshift() works better in gameplay than push().
+    entityList.push(this);
   }
   
   /**
