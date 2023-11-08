@@ -11,6 +11,7 @@ class PlayerCharacter extends Actor
     this.forceHitbox = new Force(document.createElement('div'), 0, 0, 8, 0);
     this.attackHitbox.enabled = false;
     this.forceHitbox.enabled = true;
+    this.forceHitbox.scaleX = 0.5;
     
     this.attackHitbox.linkedHTMLElement.classList.add("hurtbox");
     this.forceHitbox.linkedHTMLElement.classList.add("forceEntity");
@@ -33,29 +34,41 @@ class PlayerCharacter extends Actor
       case direction.N:
         this.forceHitbox.xPos = 0;
         this.forceHitbox.yPos = -(pixelSize+2);
+        this.forceHitbox.rotation = 0;
+        
         this.attackHitbox.xPos = 0;
         this.attackHitbox.yPos = -(pixelSize+2);
+        this.attackHitbox.rotation = 0;
         break;
         
       case direction.E:
         this.forceHitbox.xPos = (pixelSize+2);
         this.forceHitbox.yPos = 0;
+        this.forceHitbox.rotation = 90;
+        
         this.attackHitbox.xPos = (pixelSize+2);
         this.attackHitbox.yPos = 0;
+        this.attackHitbox.rotation = 90;
         break;
         
       case direction.S:
         this.forceHitbox.xPos = 0;
         this.forceHitbox.yPos = (pixelSize+2);
+        this.forceHitbox.rotation = 0;
+        
         this.attackHitbox.xPos = 0;
         this.attackHitbox.yPos = (pixelSize+2);
+        this.attackHitbox.rotation = 0;
         break;
         
       case direction.W:
         this.forceHitbox.xPos = -(pixelSize+2);
         this.forceHitbox.yPos = 0;
+        this.forceHitbox.rotation = 90;
+        
         this.attackHitbox.xPos = -(pixelSize+2);
         this.attackHitbox.yPos = 0;
+        this.attackHitbox.rotation = 90;
         break;
     }
   }

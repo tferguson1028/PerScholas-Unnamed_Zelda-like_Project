@@ -13,6 +13,7 @@ class Entity
     this.spriteSheet = spriteSheet;
     this.xPos = Number(initX);
     this.yPos = Number(initY);
+    this.rotation = 0;
     this.scaleX = 1;
     this.scaleY = 1;
     
@@ -54,6 +55,7 @@ class Entity
       // this.linkedHTMLElement.style.left = `${this.xPos}px`;
       this.linkedHTMLElement.style.translate = `${this.xPos}px ${this.yPos}px`;
       this.linkedHTMLElement.style.scale = `${this.scaleX} ${this.scaleY}`;
+      this.linkedHTMLElement.style.rotate = `${this.rotation}deg`;
     }
   }
   
@@ -77,6 +79,15 @@ class Entity
   {
     this.xPos += Number(deltaX);
     this.yPos += Number(deltaY);
+  }
+  
+  /**
+   * Protates the element in degrees
+   * @param {Number} degrees 
+   */
+  rotate(degrees)
+  {
+    this.rotation += degrees;
   }
   
   getCollisionBox()
