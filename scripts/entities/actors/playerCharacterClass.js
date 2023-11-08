@@ -90,11 +90,11 @@ class PlayerCharacter extends Actor
       this.direction = direction.S;
     }
     
-    if(InputCatcher.isInputPressed('a'))
+    if(this.keyPriority('a', 'd') === 'a')
     {
       this.translate(-moveSpeed, 0);
       this.direction = direction.W;
-    }else if(InputCatcher.isInputPressed('d'))
+    }else if(this.keyPriority('a', 'd') === 'd')
     {
       this.translate(moveSpeed, 0)
       this.direction = direction.E;
@@ -102,6 +102,17 @@ class PlayerCharacter extends Actor
     
     if(this.direction === "")
       this.direction = prevDir;
+  }
+  
+  keyPriority(key1, key2)
+  { 
+    if(InputCatcher.isInputPressed(key1) || InputCatcher.isInputPressed(key2))
+    {
+      let key1Hold = InputCatcher.isInputHeld(key1);
+      let key2Hold = InputCatcher.isInputHeld(key2);
+      return key1Hold > key2Hold ? key1 : key2;
+    }
+    return false;
   }
   
   doAttack(deltaTime)
