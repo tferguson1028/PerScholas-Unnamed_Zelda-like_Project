@@ -7,11 +7,11 @@ class PlayerCharacter extends Actor
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, pixelSize, pixelSize)
     
-    this.attackHitbox = new Hitbox(0, 0, this, 0.5, 1, 2);
+    this.attackHitbox = new Hitbox(0, 0, this, 0.8, 1, 2);
     this.forceHitbox = new Force(document.createElement('div'), 0, 0, 8, 0);
     this.attackHitbox.enabled = false;
     this.forceHitbox.enabled = true;
-    this.forceHitbox.scaleX = 0.5;
+    this.forceHitbox.scaleX = 0.8;
     
     this.attackHitbox.linkedHTMLElement.classList.add("hurtbox");
     this.forceHitbox.linkedHTMLElement.classList.add("forceEntity");
