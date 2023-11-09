@@ -26,7 +26,7 @@ class Actor extends Entity
     }
     
     this.iFrames = Math.min(this.iFrames + deltaTime, this.iFramesMax);
-    this.children.forEach(child => child.process(deltaTime));  
+    this.children.forEach(child => child.processEntity(deltaTime));  
   }
   
   attachChild(entity)
@@ -44,7 +44,9 @@ class Actor extends Entity
       return;
       
     this.iFrames = 0;
+    this.linkedHTMLElement.classList.add("damaged");
     this.health = Math.max(0, this.health - damage);
+    setTimeout(() => {this.linkedHTMLElement.classList.remove("damaged")}, this.iFramesMax*1000);
   }
   
   // Not needed, children are appended as children of this node, so their positions are relative to this

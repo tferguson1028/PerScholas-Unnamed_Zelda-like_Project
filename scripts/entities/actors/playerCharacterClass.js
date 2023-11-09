@@ -26,6 +26,7 @@ class PlayerCharacter extends Actor
    */
   process(deltaTime)
   {
+    super.process(deltaTime)
     if(this.attackHitbox.enabled)
       return;
       

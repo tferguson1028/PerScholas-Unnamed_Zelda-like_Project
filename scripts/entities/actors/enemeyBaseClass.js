@@ -10,6 +10,11 @@ class Enemy extends Actor
     this.brain = aiController instanceof EnemyAIBase ? aiController : new EnemyAIBase();
   }
   
+  process(deltaTime)
+  {
+    super.process(deltaTime);
+  }
+  
   /**
    * Move in linear direction to given position (x,y)
    * @param {Number} x 
