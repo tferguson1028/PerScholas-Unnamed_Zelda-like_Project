@@ -23,15 +23,29 @@ class Projectile extends Entity
   
   process(deltaTime)
   {
-    if(this.lifeTime <= 0) 
-    { 
-      if(this.lifeTime !== null) this.dispose(); 
+    if(this.lifeTime <= 0 && this.lifeTime !== null) 
+    {
+      this.dispose(); 
       return; 
     }
     
+    for(let entity of entityList) 
+    {
+      this.doDamage(entity);
+    }
+    
     // If lifeTime is null, do nothing, else subtract it by deltaTime
-    this.lifeTime = typeof this.lifeTime === null ? null : this.lifeTime - deltaTime;
+    this.lifeTime = this.lifeTime === null ? null : this.lifeTime - deltaTime;
     this.translate(this.speedX*deltaTime, this.speedY*deltaTime);
+  }
+  
+  doDamage(other)
+  {
+    if(other === this.owner)
+      return;
+      
+    if(this.isColliding(other) && other instanceof Actor)
+      other.takeDamage(this.damage);
   }
   
   startTraverse(speedX, speedY, lifeTime)

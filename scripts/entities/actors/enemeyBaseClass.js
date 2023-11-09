@@ -6,8 +6,8 @@ class Enemy extends Actor
   constructor(aiController, spriteSheet, initX, initY, name, health)
   {
     super(document.createElement("div"), spriteSheet, initX, initY, name, health);
-    this.linkedHTMLElement.classList.add("projectile");
-    this.brain = aiController;
+    this.linkedHTMLElement.classList.add("entity");
+    this.brain = aiController instanceof EnemyAIBase ? aiController : new EnemyAIBase();
   }
   
   /**
@@ -49,3 +49,4 @@ class EnemyGenerator
     return arr;
   }
 }
+

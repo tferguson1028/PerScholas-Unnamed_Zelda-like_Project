@@ -37,14 +37,14 @@ class Entity
    * It is used for enabling and disabling instances of Entity and allows
    * process() to be changed by inheriting classes without having to rewrite
    * this in other places.
-   * @param {*} deltaTime 
+   * @param {Number} deltaTime 
    * @returns 
    */
   processEntity(deltaTime) 
   {
     this.resetDataTypes();
     if(this.enabled)
-      this.process(deltaTime);    
+      this.process(deltaTime);
   }
   
   /**
@@ -77,6 +77,7 @@ class Entity
     // https://stackoverflow.com/a/10314492
     console.log(`Disposing ${this.constructor.name}`);
     this.linkedHTMLElement.remove();
+    entityList.splice(entityList.indexOf(this));
     delete this; // Found out that this doesn't do anything and is basically ignored at runtime.
   }
   

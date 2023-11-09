@@ -48,6 +48,8 @@ const playerActor = new PlayerCharacter(
   document.querySelector(".player")
 )
 
+const testEnemy = new Enemy(new EnemyAIBase(), null, mapSizeX*pixelSize/2-(32/2), mapSizeY*pixelSize/2-(32/2), "enemy_0", 4);
+
 playerActor.xPos = (mapSizeX*pixelSize/2)-(pixelSize/2);
 playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
 

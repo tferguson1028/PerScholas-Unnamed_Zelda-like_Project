@@ -1,4 +1,3 @@
-const maxFrames = 60; // Reducing for testing stuff, set to 60 when done.
 let currentFrame = 0;
 
 let runTimeSeconds = 0; // I used this for testing deltaTime
