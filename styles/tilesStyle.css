@@ -1,8 +1,23 @@
+
+
+.tile
+{
+  /* background-attachment: local !important; */
+  /* background-size: 200%; */
+}
+
+.tileID-floor0
+{
+  background-image: url("../assets/placeholder-map-tileset/192_224.png");
+  background-repeat: no-repeat;
+  background-size: fill;
+}
+
 .tileID-floor0 > img
 {
   /* Info source: https://stackoverflow.com/a/11484688 */
-  content: url("../assets/map-tileset/prototype_map_tileset.png");
-  clip-path: polygon(0 0, 32px 0, 32px 32px, 0 32px);
+  /* content: url("../assets/map-tileset/prototype_map_tileset.png");
+  clip-path: polygon(0 0, 16px 0, 16px 16px, 0 16px);
   object-position: -176px -32px;
-  object-fit: contain;
+  object-fit: cover !important; */
 }
