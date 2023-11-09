@@ -46,7 +46,6 @@ class Enemy extends Actor
     super.process(deltaTime);
     if(this.hurtArea.isColliding(playerActor))
     {
-      console.log("HIYA")
       this.hurtForceLeft.enabled = true;
       this.hurtForceRight.enabled = true;
       this.hurtForceTop.enabled = true;
