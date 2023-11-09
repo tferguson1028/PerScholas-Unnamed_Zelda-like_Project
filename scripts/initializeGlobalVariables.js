@@ -12,7 +12,6 @@ document.querySelector(":root").style.setProperty("--tileSize", `${pixelSize}px`
 document.querySelector(":root").style.setProperty("--tilesX", `${mapSizeX}`);
 document.querySelector(":root").style.setProperty("--tilesY", `${mapSizeY}`);
 
-
 // Used for actors
 const direction = 
 {

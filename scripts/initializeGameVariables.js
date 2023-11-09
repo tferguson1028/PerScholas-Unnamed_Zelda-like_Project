@@ -16,6 +16,17 @@ worldBoundary.right = new Force(boundary.cloneNode(), (mapSizeX*pixelSize)-pixel
 worldBoundary.top = new Force(boundary.cloneNode(), 0, -(mapSizeY*pixelSize)+pixelSize, 0, 1);
 worldBoundary.bottom = new Force(boundary.cloneNode(), 0, (mapSizeY*pixelSize)-pixelSize, 0, -1);
 
+//# Initializing Map
+{
+  const tile = document.createElement("div");
+  tile.className = "tile tileID0";
+  tile.innerHTML = `<img class="sprite" src="" alt="ERROR">`;
+
+  for(let i = 0; i < mapSizeX*mapSizeY; i++)
+  {
+    gameMap.appendChild(tile.cloneNode(true));
+  }
+}
 //# Creating actors
 const playerActor = new PlayerCharacter(
   document.querySelector(".player")
