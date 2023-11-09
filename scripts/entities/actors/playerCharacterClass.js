@@ -87,9 +87,13 @@ class PlayerCharacter extends Actor
   
   doMovement(deltaTime)
   {
+    if(InputCatcher.isInputPressed("shift")) this.speed = 4;
+    else this.speed = 6;
+    
     let moveSpeed = this.speed*pixelSize*deltaTime;
     let prevDir = this.direction;
     this.direction = "";
+    
     
     // I only want player to face cardinal directions, so replace
     if(InputCatcher.isInputPressed('w'))
@@ -112,7 +116,7 @@ class PlayerCharacter extends Actor
       this.direction = direction.E;
     }
     
-    if(this.direction === "")
+    if(this.direction === "" || InputCatcher.isInputPressed('shift'))
       this.direction = prevDir;
   }
   
