@@ -93,10 +93,8 @@ class Actor extends Entity
     this.iFrames = 0;
     this.linkedHTMLElement.classList.add("damaged");
     this.health = Math.max(0, this.health - damage);
-    console.log(this.iFramesMax);
     setTimeout(() => {
         this.linkedHTMLElement.classList.remove("damaged")
-        console.log("GAGAGA");
       }, 
     this.iFramesMax*1000);
   }

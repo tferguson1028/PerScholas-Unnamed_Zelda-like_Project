@@ -72,7 +72,22 @@ class Enemy extends Actor
   {
     let xSign = -x/(Math.abs(x));
     let ySign = -y/(Math.abs(y));
-    this.translate(this.speed*deltaTime*pixelSize*xSign, this.speed*pixelSize*deltaTime*ySign);
+    
+    let minDistX = -this.brain.distanceToTarget(playerActor).X*deltaTime;
+    let maxDistX = this.speed*deltaTime*pixelSize*xSign;
+    let minDistY = -this.brain.distanceToTarget(playerActor).Y*deltaTime;
+    let maxDistY = this.speed*deltaTime*pixelSize*ySign;
+    
+    let xMove;
+    let yMove;
+    
+    if(Math.abs(minDistX) < Math.abs(maxDistX)) { xMove = minDistX; }
+    else { xMove = maxDistX; }
+    
+    if(Math.abs(minDistY) < Math.abs(maxDistY)) { yMove = minDistY; }
+    else { yMove = maxDistY; }
+    
+    this.translate(xMove, yMove);
   }
   
   /**
@@ -80,9 +95,9 @@ class Enemy extends Actor
    * @param {Number} x 
    * @param {Number} y 
    */
-  moveAwayFrom(x, y)
+  moveAwayFrom(x, y, deltaTime)
   {
-    
+    moveTo(-x, -y, deltaTime);
   }
 }
 
