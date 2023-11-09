@@ -1,24 +1,24 @@
 const aiActions =
 {
-  0: "none",
-  1: "idle",
-  2: "moveTo",
-  3: "attack",
-  4: "moveAway",
-  5: "random" 
+  none: 0,
+  idle: 1,
+  moveTo: 2,
+  attack: 3,
+  moveAway: 4,
+  random: 5
 }
 
 class EnemyAIBase
 {
-  constructor(owner, target)
+  setOwner(owner)
   {
     this.owner = owner instanceof Entity ? owner : null;
-    this.target = target instanceof Entity ? target : null;
   }
   
   /**
    * Processes mapData to form a heuristic and return a code.
    * This is used to tell Entity instances what to do on each process.
+   * This function is meant to be overridden by extending classes.
    * @param {String} mapData 
    * @returns String
    */
@@ -28,10 +28,20 @@ class EnemyAIBase
     return retAction;
   }
   
-  distanceToTarget()
+  distanceToTarget(target)
   {
-    let deltaX = this.owner.xPos - this.target.xPos;
-    let daltaY = this.owner.yPos - this.target.yPos;
+    let deltaX = this.owner.xPos - target.xPos;
+    let deltaY = this.owner.yPos - target.yPos;
+    
+    return {X: deltaX, Y: deltaY};
+  }
+}
+
+class AIStraightPath
+{
+  getAction(mapData)
+  {
+    return aiActions[2];
   }
 }
 

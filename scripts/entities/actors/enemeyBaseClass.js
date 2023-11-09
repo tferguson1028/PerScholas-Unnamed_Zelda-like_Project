@@ -3,12 +3,12 @@
  */
 class Enemy extends Actor
 {
-  constructor(aiController, spriteSheet, initX, initY, name, health)
+  constructor(aiController, spriteSheet, initX, initY, name, health, speed)
   {
     super(document.createElement("div"), spriteSheet, initX, initY, name, health);
     this.linkedHTMLElement.classList.add("entity");
     this.brain = aiController instanceof EnemyAIBase ? aiController : new EnemyAIBase();
-    
+    this.speed = speed || 1;
     
     this.hurtForceLeft = new Force(this.linkedHTMLElement.cloneNode(), -24, 0, this.borderLeft.forceX, this.borderLeft.forceY);
     this.hurtForceRight = new Force(this.linkedHTMLElement.cloneNode(), 24, 0, this.borderRight.forceX, this.borderRight.forceY);
@@ -68,9 +68,11 @@ class Enemy extends Actor
    * @param {Number} x 
    * @param {Number} y 
    */
-  moveTo(x, y)
+  moveTo(x, y, deltaTime)
   {
-    
+    let xSign = -x/(Math.abs(x));
+    let ySign = -y/(Math.abs(y));
+    this.translate(this.speed*deltaTime*pixelSize*xSign, this.speed*pixelSize*deltaTime*ySign);
   }
   
   /**
@@ -80,7 +82,7 @@ class Enemy extends Actor
    */
   moveAwayFrom(x, y)
   {
-  
+    
   }
 }
 
