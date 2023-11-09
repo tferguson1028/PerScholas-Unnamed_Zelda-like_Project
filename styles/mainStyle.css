@@ -1,7 +1,7 @@
 :root {
   --tileSize: 32px;
-  --tilesX: 16;
-  --tilesY: 10;
+  --tilesX: 19;
+  --tilesY: 13;
 }
 
 html, body {

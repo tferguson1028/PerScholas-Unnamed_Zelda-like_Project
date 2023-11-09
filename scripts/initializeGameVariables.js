@@ -8,18 +8,23 @@ const worldBoundary = {
 
 let boundary = document.createElement("div");
 boundary.classList.add("forceEntity");
-boundary.style.width = `${gameMap.getBoundingClientRect().width}px`;
-boundary.style.height = `${gameMap.getBoundingClientRect().height}px`;
+boundary.style.width = `${mapSizeX*pixelSize}px`;
+boundary.style.height = `${mapSizeY*pixelSize}px`;
 
-worldBoundary.left = new Force(boundary.cloneNode(), -gameMap.getBoundingClientRect().width, 0, 1, 0);
-worldBoundary.right = new Force(boundary.cloneNode(), gameMap.getBoundingClientRect().width, 0, -1, 0);
-worldBoundary.top = new Force(boundary.cloneNode(), 0, -gameMap.getBoundingClientRect().height, 0, 1);
-worldBoundary.bottom = new Force(boundary.cloneNode(), 0, gameMap.getBoundingClientRect().height, 0, -1);
+worldBoundary.left = new Force(boundary.cloneNode(), -(mapSizeX*pixelSize)+pixelSize, 0, 1, 0);
+worldBoundary.right = new Force(boundary.cloneNode(), (mapSizeX*pixelSize)-pixelSize, 0, -1, 0);
+worldBoundary.top = new Force(boundary.cloneNode(), 0, -(mapSizeY*pixelSize)+pixelSize, 0, 1);
+worldBoundary.bottom = new Force(boundary.cloneNode(), 0, (mapSizeY*pixelSize)-pixelSize, 0, -1);
 
 //# Creating actors
 const playerActor = new PlayerCharacter(
   document.querySelector(".player")
 )
+
+playerActor.xPos = (mapSizeX*pixelSize/2)-(pixelSize/2);
+playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
+
+// const roomEnemies = EnemyGenerator.createEnemies(4);
 
 // Testing deleting objects. It works
 // playerActor.dispose();

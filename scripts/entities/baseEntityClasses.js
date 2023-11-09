@@ -24,6 +24,15 @@ class Entity
   }
   
   /**
+   * This functions sets all primitive vars to the datatype they're intended to be
+   */
+  resetDataTypes()
+  {
+    if(typeof this.xPos !== "number" || isNaN(this.xPos)) this.xPos = Number(this.xPos) || 0;
+    if(typeof this.yPos !== "number" || isNaN(this.yPos)) this.yPos = Number(this.yPos) || 0;
+  }
+  
+  /**
    * A "final" function that is used by the gameLoop.js script to process
    * It is used for enabling and disabling instances of Entity and allows
    * process() to be changed by inheriting classes without having to rewrite
@@ -32,9 +41,10 @@ class Entity
    * @returns 
    */
   processEntity(deltaTime) 
-  { 
+  {
+    this.resetDataTypes();
     if(this.enabled)
-      this.process(deltaTime);
+      this.process(deltaTime);    
   }
   
   /**
