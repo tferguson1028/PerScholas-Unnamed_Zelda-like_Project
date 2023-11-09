@@ -12,9 +12,25 @@ boundary.style.width = `${mapSizeX*pixelSize}px`;
 boundary.style.height = `${mapSizeY*pixelSize}px`;
 
 worldBoundary.left = new Force(boundary.cloneNode(), -(mapSizeX*pixelSize)+pixelSize, 0, 1, 0);
+worldBoundary.left.linkedHTMLElement.style.width = `${pixelSize}px`;
+worldBoundary.left.xPos = 0;
+worldBoundary.left.update();
+
 worldBoundary.right = new Force(boundary.cloneNode(), (mapSizeX*pixelSize)-pixelSize, 0, -1, 0);
+worldBoundary.right.linkedHTMLElement.style.width = `${pixelSize}px`;
+worldBoundary.right.xPos = (mapSizeX*pixelSize)-32;
+worldBoundary.right.update();
+
 worldBoundary.top = new Force(boundary.cloneNode(), 0, -(mapSizeY*pixelSize)+pixelSize, 0, 1);
+worldBoundary.top.linkedHTMLElement.style.height = `${pixelSize}px`;
+worldBoundary.top.yPos = 0;
+worldBoundary.top.update();
+
 worldBoundary.bottom = new Force(boundary.cloneNode(), 0, (mapSizeY*pixelSize)-pixelSize, 0, -1);
+worldBoundary.bottom.linkedHTMLElement.style.height = `${pixelSize}px`;
+worldBoundary.bottom.yPos = (mapSizeY*pixelSize)-32;
+worldBoundary.bottom.update();
+
 
 //# Initializing Map
 {
