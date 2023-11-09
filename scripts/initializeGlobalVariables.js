@@ -6,7 +6,7 @@ const gameMap = document.querySelector("#gameMap");
 const gameEntities = document.querySelector("#gameEntities");
 
 const mapSizeX = 19;
-const mapSizeY = 13;
+const mapSizeY = 11;
 
 const maxFrames = 60; // Reducing for testing stuff, set to 60 when done.
 

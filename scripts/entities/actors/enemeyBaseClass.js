@@ -17,6 +17,8 @@ class Enemy extends Actor
     
     this.hurtForceLeft.scaleY = 1.5;
     this.hurtForceRight.scaleY = 1.5;
+    this.hurtForceTop.scaleX = 1.5;
+    this.hurtForceBottom.scaleX = 1.5;
     
     this.hurtForceLeft.linkedHTMLElement.className = "forceEntity";
     this.hurtForceRight.linkedHTMLElement.className = "forceEntity";
