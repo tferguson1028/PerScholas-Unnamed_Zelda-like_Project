@@ -3,12 +3,13 @@
  */
 class Actor extends Entity
 {
-  constructor(htmlElement, spriteSheet, initX, initY, name, health, iFrames = 0.5)
+  constructor(htmlElement, spriteSheet, initX, initY, name, health, team, iFrames = 0.5)
   {
     super(htmlElement, spriteSheet, initX, initY);
     this.name = name;
     this.maxHealth = health;
     this.health = health;
+    this.team = team;
     this.direction = direction["N"];
     
     this.iFrames = iFrames;
@@ -50,6 +51,19 @@ class Actor extends Entity
     this.attachChild(this.borderBottom);
   }
   
+  processEntity(deltaTime) 
+  {
+    this.resetDataTypes();
+    if(this.iFrames < this.iFramesMax)
+    {
+      this.iFrames += deltaTime;
+      return;
+    }
+    
+    if(this.enabled)
+      this.process(deltaTime);
+  }
+  
   process(deltaTime) 
   { 
     if(this.health <= 0)
@@ -71,7 +85,7 @@ class Actor extends Entity
     this.children.push(entity);
   }
   
-  takeDamage(damage)
+  takeDamage(damage, deltaTime)
   {
     if(this.iFrames < this.iFramesMax)
       return;
@@ -79,7 +93,12 @@ class Actor extends Entity
     this.iFrames = 0;
     this.linkedHTMLElement.classList.add("damaged");
     this.health = Math.max(0, this.health - damage);
-    setTimeout(() => {this.linkedHTMLElement.classList.remove("damaged")}, this.iFramesMax*1000);
+    console.log(this.iFramesMax);
+    setTimeout(() => {
+        this.linkedHTMLElement.classList.remove("damaged")
+        console.log("GAGAGA");
+      }, 
+    this.iFramesMax*1000);
   }
   
   // Not needed, children are appended as children of this node, so their positions are relative to this

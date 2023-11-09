@@ -17,7 +17,7 @@ class Force extends Entity
   
   process(deltaTime)
   {
-    super.process();
+    super.process(deltaTime);
     entityList.forEach((entity) =>
     {
       if(entity instanceof Actor && entity !== this.owner)
@@ -54,6 +54,6 @@ class Boundary extends Force
       if(entity instanceof Actor && entity !== this.owner)
         this.pushAsBoundary(entity, deltaTime);
     });
-    super.process();
+    super.process(deltaTime);
   }
 }

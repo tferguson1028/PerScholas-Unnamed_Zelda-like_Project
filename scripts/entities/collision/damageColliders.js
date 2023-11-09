@@ -31,7 +31,7 @@ class Projectile extends Entity
     
     for(let entity of entityList) 
     {
-      this.doDamage(entity);
+      this.doDamage(entity, deltaTime);
     }
     
     // If lifeTime is null, do nothing, else subtract it by deltaTime
@@ -39,13 +39,13 @@ class Projectile extends Entity
     this.translate(this.speedX*deltaTime, this.speedY*deltaTime);
   }
   
-  doDamage(other)
+  doDamage(other, deltaTime)
   {
-    if(other === this.owner)
+    if(other === this.owner || this.owner.team === other.team)
       return;
       
     if(this.isColliding(other) && other instanceof Actor)
-      other.takeDamage(this.damage);
+      other.takeDamage(this.damage, deltaTime);
   }
   
   startTraverse(speedX, speedY, lifeTime)

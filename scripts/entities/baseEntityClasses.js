@@ -77,8 +77,7 @@ class Entity
     // https://stackoverflow.com/a/10314492
     console.log(`Disposing ${this.constructor.name}`);
     this.linkedHTMLElement.remove();
-    entityList.splice(entityList.indexOf(this));
-    delete this; // Found out that this doesn't do anything and is basically ignored at runtime.
+    entityList.splice(entityList.indexOf(this), 1);
   }
   
   /**
