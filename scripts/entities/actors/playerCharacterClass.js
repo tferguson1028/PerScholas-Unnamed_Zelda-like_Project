@@ -2,7 +2,6 @@ class PlayerCharacter extends Actor
 {
   //Making static due to JS rules
   static spriteSheetPath = "assets/*";
-  speed = 6;
   constructor(htmlElement, initX = 0, initY = 0)
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, pixelSize, pixelSize)
@@ -12,6 +11,7 @@ class PlayerCharacter extends Actor
     this.attackHitbox.enabled = false;
     this.forceHitbox.enabled = false;
     this.forceHitbox.scaleX = 0.8;
+    this.speed = 6;
     
     this.attackHitbox.linkedHTMLElement.classList.add("hurtbox");
     this.forceHitbox.linkedHTMLElement.classList.add("forceEntity");
@@ -27,7 +27,7 @@ class PlayerCharacter extends Actor
   process(deltaTime)
   {
     super.process(deltaTime)
-    if(this.attackHitbox.enabled)
+    if(this.attackHitbox.enabled || this.iFrames < this.iFramesMax)
       return;
       
     this.doMovement(deltaTime);

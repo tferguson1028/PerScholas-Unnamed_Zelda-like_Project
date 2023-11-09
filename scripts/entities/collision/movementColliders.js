@@ -10,15 +10,17 @@ class Force extends Entity
     this.forceX = forceX;
     this.forceY = forceY;
     this.enabled = false;
+    this.owner = null;
     // entityList.splice(entityList.indexOf(this));
     // this.linkedHTMLElement.style.zIndex = "-100";
   }
   
   process(deltaTime)
   {
+    super.process();
     entityList.forEach((entity) =>
     {
-      if(entity instanceof Actor)
+      if(entity instanceof Actor && entity !== this.owner)
         this.pushOut(entity, deltaTime);
     });
   }
@@ -40,5 +42,18 @@ class Force extends Entity
     let timeout = 0;
     while(++timeout < 1000 && this.isColliding(other))
       other.translate(this.forceX*deltaTime, this.forceY*deltaTime);
+  }
+}
+
+class Boundary extends Force
+{
+  process(deltaTime)
+  {
+    entityList.forEach((entity) =>
+    {
+      if(entity instanceof Actor && entity !== this.owner)
+        this.pushAsBoundary(entity, deltaTime);
+    });
+    super.process();
   }
 }

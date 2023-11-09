@@ -15,6 +15,39 @@ class Actor extends Entity
     this.iFramesMax = iFrames;
     
     this.children = [];
+  
+    let borderBase = document.createElement("div");
+    console.log(this.linkedHTMLElement.style.height);
+
+    borderBase.style.width = "24px";
+    borderBase.style.height = "24px";
+    borderBase.classList.add("forceEntity");
+    
+    this.borderLeft = new Boundary(borderBase.cloneNode(), 0, 4, -32, 0);
+    this.borderRight = new Boundary(borderBase.cloneNode(), 32-8, 4, 32, 0);
+    this.borderTop = new Boundary(borderBase.cloneNode(), 4, 0, 0, -32);
+    this.borderBottom = new Boundary(borderBase.cloneNode(), 4, 32-8, 0, 32);
+
+    this.borderLeft.enabled = true;
+    this.borderLeft.linkedHTMLElement.style.width = "8px";
+    this.borderLeft.owner = this;
+
+    this.borderRight.enabled = true;
+    this.borderRight.linkedHTMLElement.style.width = "8px";
+    this.borderRight.owner = this;
+
+    this.borderTop.enabled = true;
+    this.borderTop.linkedHTMLElement.style.height = "8px";
+    this.borderTop.owner = this;
+
+    this.borderBottom.enabled = true;
+    this.borderBottom.linkedHTMLElement.style.height = "8px";
+    this.borderBottom.owner = this;    
+
+    this.attachChild(this.borderLeft);
+    this.attachChild(this.borderRight);
+    this.attachChild(this.borderTop);
+    this.attachChild(this.borderBottom);
   }
   
   process(deltaTime) 
