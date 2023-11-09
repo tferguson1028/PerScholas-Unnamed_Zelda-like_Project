@@ -19,8 +19,8 @@ worldBoundary.bottom = new Force(boundary.cloneNode(), 0, (mapSizeY*pixelSize)-p
 //# Initializing Map
 {
   const tile = document.createElement("div");
-  tile.className = "tile tileID0";
-  tile.innerHTML = `<img class="sprite" src="" alt="ERROR">`;
+  tile.className = "tile tileID-floor0";
+  tile.innerHTML = `<img class="sprite" src="">`;
 
   for(let i = 0; i < mapSizeX*mapSizeY; i++)
   {

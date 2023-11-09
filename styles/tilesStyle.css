@@ -1,0 +1,8 @@
+.tileID-floor0 > img
+{
+  /* Info source: https://stackoverflow.com/a/11484688 */
+  content: url("../assets/map-tileset/prototype_map_tileset.png");
+  clip-path: polygon(0 0, 32px 0, 32px 32px, 0 32px);
+  object-position: -176px -32px;
+  object-fit: contain;
+}
