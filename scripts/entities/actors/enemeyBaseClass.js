@@ -34,6 +34,8 @@ class Enemy extends Actor
     this.hurtForceBottom.owner = this;
     
     this.hurtArea = new Hitbox(0, 0, this, 1.1, 1.1, 1);    
+    this.hurtArea.enabled = true;
+    
     this.attachChild(this.hurtArea);
     this.attachChild(this.hurtForceLeft);
     this.attachChild(this.hurtForceRight);
@@ -46,16 +48,17 @@ class Enemy extends Actor
     super.process(deltaTime);
     if(this.hurtArea.isColliding(playerActor))
     {
+      console.log(playerActor.health);
       this.hurtForceLeft.enabled = true;
       this.hurtForceRight.enabled = true;
       this.hurtForceTop.enabled = true;
       this.hurtForceBottom.enabled = true;
     }else
     {
-    this.hurtForceLeft.enabled = false;
-    this.hurtForceRight.enabled = false;
-    this.hurtForceTop.enabled = false;
-    this.hurtForceBottom.enabled = false;
+      this.hurtForceLeft.enabled = false;
+      this.hurtForceRight.enabled = false;
+      this.hurtForceTop.enabled = false;
+      this.hurtForceBottom.enabled = false;
     }
       
   }

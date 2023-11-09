@@ -49,6 +49,8 @@ const playerActor = new PlayerCharacter(
 )
 
 const testEnemy = new Enemy(new EnemyAIBase(), null, mapSizeX*pixelSize/2-(32/2), mapSizeY*pixelSize/2-(32/2), "enemy_0", 4);
+// const testSlime = new Slime(0, 0, "bubbly", 20);
+
 
 playerActor.xPos = (mapSizeX*pixelSize/2)-(pixelSize/2);
 playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
