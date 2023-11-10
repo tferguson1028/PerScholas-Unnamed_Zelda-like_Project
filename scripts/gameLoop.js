@@ -64,24 +64,17 @@ function main(deltaTime)
   {
     if(dungeonDoors[door].enabled && dungeonDoors[door].isColliding(playerActor))
     {
-      previousDoor = dungeonDoors[door];
-      switch(dungeonDoors[door])
-      {
-        case dungeonDoors.top: generateNewRoom(); break;
-        case dungeonDoors.bottom: generateNewRoom(); break;
-        case dungeonDoors.left: generateNewRoom(); break;
-        case dungeonDoors.right: generateNewRoom(); break;
-      }
+      console.log("EEE");
+      previousDoor = door;
+      generateNewRoom();
+      dungeonDoors[door].enabled = false;
     }
   }
   
   if(isPlayerDead()) { endGame(); return; }
-  if(isRoomCleared())
-  {
-    for(let door in dungeonDoors) 
-    {
-    }
-  }
+  
+  if(isRoomCleared()){ console.log("OPENUP"); setAllDoors(true); }
+  else { setAllDoors(false); }
 }
 
 /**
@@ -122,11 +115,19 @@ function isPlayerDead() { return playerActor.health <= 0; }
 
 function isRoomCleared()
 {
-  entityList.forEach((entity) =>
-  {
+  // Since forEach uses a function within, I need to use a for-of
+  // entityList.forEach((entity) =>
+  // {
+  //   if(entity.linkedHTMLElement.classList.contains("enemy")) 
+  //   {
+  //     return false;
+  //   }
+  // });
+  
+  for(let entity of entityList)
     if(entity.linkedHTMLElement.classList.contains("enemy")) 
       return false;
-  });
+      
   return true;
 }
 
@@ -138,9 +139,13 @@ function generateNewRoom()
   console.log("AHEIEEEEEEEEEEEEEEEEEE!");
 }
 
-function clearRoom()
+function setAllDoors(bool)
 {
-  //TODO: This function should reset the map to its initial state
+  for(let door in dungeonDoors)
+  {
+    if(!bool && door !== previousDoor)
+      dungeonDoors[door].enabled = Boolean(bool);
+  }
 }
 
 

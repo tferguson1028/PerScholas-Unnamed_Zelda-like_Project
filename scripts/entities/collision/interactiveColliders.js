@@ -10,6 +10,11 @@ class AreaActivate extends Hitbox
   }
   
   process(deltaTime){}
+  
+  isColliding(other)
+  {
+    if(this.enabled) return super.isColliding(other);
+  }
 }
 
 class AreaInteract extends AreaActivate

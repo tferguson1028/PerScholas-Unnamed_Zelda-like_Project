@@ -96,3 +96,15 @@ function generateEntities(mapCode)
     }
   }
 }
+
+
+function clearRoom()
+{
+  //TODO: This function should reset the map to its initial state
+  for(let element of gameMap.children)
+  {
+    console.log(element);
+    element.remove();
+  }
+}
+

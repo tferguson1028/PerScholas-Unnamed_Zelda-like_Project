@@ -41,7 +41,7 @@ class Projectile extends Entity
   
   doDamage(other, deltaTime)
   {
-    if(other === this.owner || this.owner.team === other.team)
+    if(!this.enabled || other === this.owner || this.owner.team === other.team)
       return;
       
     if(this.isColliding(other) && other instanceof Actor)
