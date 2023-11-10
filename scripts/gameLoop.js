@@ -73,8 +73,8 @@ function main(deltaTime)
   
   if(isPlayerDead()) { endGame(); return; }
   
-  if(isRoomCleared()){ console.log("OPENUP"); setAllDoors(true); }
-  else { setAllDoors(false); }
+  if(isRoomCleared()){ console.log("OPENUP"); openAllDoors(true); }
+  else { closeAllDoors(false); }
 }
 
 /**
@@ -139,12 +139,20 @@ function generateNewRoom()
   console.log("AHEIEEEEEEEEEEEEEEEEEE!");
 }
 
-function setAllDoors(bool)
+function openAllDoors()
 {
   for(let door in dungeonDoors)
   {
-    if(!bool && door !== previousDoor)
-      dungeonDoors[door].enabled = Boolean(bool);
+    if(door !== previousDoor)
+      dungeonDoors[door].enabled = true;
+  }
+}
+
+function closeAllDoors()
+{
+  for(let door in dungeonDoors)
+  {  
+    dungeonDoors[door].enabled = false;
   }
 }
 
