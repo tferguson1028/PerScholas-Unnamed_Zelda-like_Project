@@ -69,5 +69,23 @@ function update()
  */
 function ui()
 {
-  
+  //TODO  
+}
+
+function startGame()
+{
+  //TODO  
+
+}
+
+function resetGame()
+{
+  //TODO  
+
+}
+
+function generateMap()
+{
+  //TODO  
+
 }

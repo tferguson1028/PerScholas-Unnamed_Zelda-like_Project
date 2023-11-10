@@ -1,38 +1,7 @@
-/*
-  Map key
-  ":" = Dungeon Wall
-  ">" = Entry/Exit
-  
-  "P" = Player
-  "E" = Enemy
-  
-  " " = Empty
-  "B" = Block
-  "R" = Rock
-  "W" = Water
-*/
-
-const testMap = 
-`
-::::::::>>>::::::::
-:                 :
-:                 :
-:                 :
-:                 :
->                 >
->                 >
->                 >
-:                 :
-:                 :
-:                 :
-:                 :
-::::::::>>>::::::::
-`;
-
 function generateMap(mapCode)
 {
   // https://stackoverflow.com/a/15040335
-  for(child of gameMap.children)
+  for(let child of gameMap.children)
     child.className = "tile";
     
   for(let i = 0; i < gameMap.children.length; i++)
@@ -42,7 +11,7 @@ function generateMap(mapCode)
     switch(mapCode[i])
     {
       // Dungeon Walls
-      case ":":
+      case mapKey.wall:
         if(xIndex === 0)
         {
           if(yIndex === 0) gameMap.children[i].classList.add("tileID-wall_top_left");
@@ -60,10 +29,23 @@ function generateMap(mapCode)
           else gameMap.children[i].classList.add("tileID-wall_center");
         }
         break;
-      
+
+      //TODO      
       // Dungeon Doors
-      case ">":
+      case mapKey.door_open:
         gameMap.children[i].classList.add("tileID0");
+        break;
+      
+      case mapKey.door_closed:
+        break;
+        
+      case mapKey.block:
+        break;
+        
+      case mapKey.player:
+        break;
+        
+      case mapKey.enemy_random:
         break;
     }
   }

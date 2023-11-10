@@ -27,3 +27,58 @@ const direction =
   NW: "northwest",
   SW: "southwest"
 };
+
+//# MAPS
+const mapKey = 
+{
+  // Terrain (Non interactive elements)
+  wall: ":",
+  door_open: ">",
+  door_closed: "<",
+  empty: " ",
+  block: "#",
+  water: "~",
+  
+  // Objects (Interactive elements)
+  rock: "R",
+  
+  // Entities (Actor elements)
+  player: "P",
+  enemy_random: "E",
+  enemy_type0: "0", // Slime
+  enemy_type1: "1", // Skeleton
+  enemy_type2: "2", // ?
+  enemy_type3: "3", // ?
+  enemy_type4: "4"  // ?
+}
+
+
+const testMap = 
+`
+::::::::>>>::::::::
+:                 :
+:                 :
+:    B       B    :
+>                 >
+>                 >
+>                 >
+:    B       B    :
+:        P        :
+:                 :
+::::::::>>>::::::::
+`;
+
+const map_StartingRoom = 
+`
+::::::::>>>::::::::
+:                 :
+:                 :
+:                 :
+>                 >
+>                 >
+>                 >
+:                 :
+:        P        :
+:                 :
+::::::::<<<::::::::
+`;
