@@ -4,6 +4,8 @@ let runTimeSeconds = 0; // I used this for testing deltaTime
 let lastFrameTime = 0;
 
 let paused = false;
+let previousDoor = null;
+
 
 setInterval(() => 
   {
@@ -48,6 +50,7 @@ setInterval(() =>
  */
 function main(deltaTime)
 {
+
   entityList.forEach((entity) => 
   {
     entity.processEntity(deltaTime);
@@ -58,9 +61,27 @@ function main(deltaTime)
     }
   });
   
+  for(let door in dungeonDoors) 
+  {
+    if(door.enabled && door.isColliding(playerActor))
+    {
+      previousDoor = door;
+      switch(door)
+      {
+        case dungeonDoors.top: break;
+        case dungeonDoors.bottom: break;
+        case dungeonDoors.left: break;
+        case dungeonDoors.right: break;
+      }
+    }
+  }
+  
+  if(isPlayerDead()) { endGame(); return; }
   if(isRoomCleared())
   {
-    
+    for(let door in dungeonDoors) 
+    {
+    }
   }
 }
 
@@ -93,6 +114,13 @@ function resetGame()
 
 }
 
+function endGame()
+{
+
+}
+
+function isPlayerDead() { return playerActor.health <= 0; }
+
 function isRoomCleared()
 {
   entityList.forEach((entity) =>
@@ -101,4 +129,9 @@ function isRoomCleared()
       return false;
   });
   return true;
+}
+
+function generateNewRoom()
+{
+  
 }

@@ -10,6 +10,8 @@ const mapSizeY = 11;
 
 const maxFrames = 60; // Reducing for testing stuff, set to 60 when done.
 
+let currentRoom = 0;
+
 //https://www.w3schools.com/css/css3_variables_javascript.asp
 document.querySelector(":root").style.setProperty("--tileSize", `${pixelSize}px`);
 document.querySelector(":root").style.setProperty("--tilesX", `${mapSizeX}`);

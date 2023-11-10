@@ -31,6 +31,18 @@ worldBoundary.bottom.linkedHTMLElement.style.height = `${pixelSize}px`;
 worldBoundary.bottom.yPos = (mapSizeY*pixelSize)-32;
 worldBoundary.bottom.update();
 
+
+//# Doors
+const dungeonDoors = {
+  top: undefined,
+  bottom: undefined,
+  left: undefined,
+  right: undefined
+}
+
+
+
+
 //# Creating actors
 const playerActor = new PlayerCharacter(
   document.querySelector(".player")
