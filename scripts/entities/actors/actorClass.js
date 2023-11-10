@@ -17,6 +17,8 @@ class Actor extends Entity
     
     this.children = [];
   
+    this.linkedHTMLElement.classList.add("entity");
+    
     let borderBase = document.createElement("div");
     borderBase.style.width = "24px";
     borderBase.style.height = "24px";

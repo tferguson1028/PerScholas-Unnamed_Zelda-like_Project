@@ -16,6 +16,10 @@ setInterval(() =>
     currentFrame = (currentFrame+1)%maxFrames;
     runTimeSeconds += deltaTime;
     
+    // paused = true;
+    if(InputCatcher.isInputJustPressed("`"))
+      paused = !paused;
+    
     if(!paused)
     {
       if(InputCatcher.isInputJustPressed('`'))
@@ -53,6 +57,11 @@ function main(deltaTime)
         worldBoundary[boundary].pushAsBoundary(entity, deltaTime);
     }
   });
+  
+  if(isRoomCleared())
+  {
+    
+  }
 }
 
 /**
@@ -82,4 +91,14 @@ function resetGame()
 {
   //TODO: Restart button (optional)
 
+}
+
+function isRoomCleared()
+{
+  entityList.forEach((entity) =>
+  {
+    if(entity.linkedHTMLElement.classList.contains("enemy")) 
+      return false;
+  });
+  return true;
 }

@@ -5,6 +5,7 @@ class PlayerCharacter extends Actor
   constructor(htmlElement, initX = 0, initY = 0)
   {
     super(htmlElement, PlayerCharacter.spriteSheetPath, initX, initY, "player", 20, "player");
+    this.linkedHTMLElement.classList.add("player");
     
     this.attackHitbox = new Hitbox(0, 0, this, 0.8, 1, 2);
     this.forceHitbox = new Force(document.createElement('div'), 0, 0, 0, 0);

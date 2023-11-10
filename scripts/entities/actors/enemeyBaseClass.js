@@ -6,7 +6,7 @@ class Enemy extends Actor
   constructor(aiController, spriteSheet, initX, initY, name, health, speed)
   {
     super(document.createElement("div"), spriteSheet, initX, initY, name, health, "enemy");
-    this.linkedHTMLElement.classList.add("entity");
+    this.linkedHTMLElement.classList.add("enemy");
     this.brain = aiController instanceof EnemyAIBase ? aiController : new EnemyAIBase();
     this.speed = speed || 1;
     
