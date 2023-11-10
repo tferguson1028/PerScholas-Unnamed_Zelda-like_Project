@@ -62,7 +62,6 @@ class Enemy extends Actor
       this.hurtForceTop.enabled = false;
       this.hurtForceBottom.enabled = false;
     }
-      
   }
   
   /**

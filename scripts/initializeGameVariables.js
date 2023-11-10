@@ -31,21 +31,21 @@ worldBoundary.bottom.linkedHTMLElement.style.height = `${pixelSize}px`;
 worldBoundary.bottom.yPos = (mapSizeY*pixelSize)-32;
 worldBoundary.bottom.update();
 
-// TODO: Remove this generation when making game start and round system.
-generateMap(testMap, "tileID-floor0");
-
-
 //# Creating actors
 const playerActor = new PlayerCharacter(
   document.querySelector(".player")
 )
 
-const testEnemy = new Enemy(new EnemyAIBase(), null, mapSizeX*pixelSize/2-(32/2), mapSizeY*pixelSize/2-(32/2), "enemy_0", 4);
-const testSlime = new Slime(64, 32, "bubbly", 8);
+// const testEnemy = new Enemy(new EnemyAIBase(), null, mapSizeX*pixelSize/2-(32/2), mapSizeY*pixelSize/2-(32/2), "enemy_0", 4);
+const testSlime = new Slime(mapSizeX/2*pixelSize, 32, "sdbubbly", 8);
 
+// playerActor.xPos = (mapSizeX*pixelSize/2)-(pixelSize/2);
+// playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
 
-playerActor.xPos = (mapSizeX*pixelSize/2)-(pixelSize/2);
-playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
+// TODO: Remove this generation when making game start and round system.
+generateMap(testMap, "tileID-floor0");
+generateEntities(testMap);
+
 
 // const roomEnemies = EnemyGenerator.createEnemies(4);
 
