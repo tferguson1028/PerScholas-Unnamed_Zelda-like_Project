@@ -31,6 +31,9 @@ worldBoundary.bottom.linkedHTMLElement.style.height = `${pixelSize}px`;
 worldBoundary.bottom.yPos = (mapSizeY*pixelSize)-32;
 worldBoundary.bottom.update();
 
+// TODO: Remove this generation when making game start and round system.
+generateMap(testMap, "tileID-floor0");
+
 
 //# Creating actors
 const playerActor = new PlayerCharacter(

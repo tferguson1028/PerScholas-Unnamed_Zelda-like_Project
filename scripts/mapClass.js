@@ -1,15 +1,13 @@
-//  TODO: Remove this generation when making game start and round system.
-generateMap(testMap, "tileID-floor0");
 function generateMap(mapCode, specialCode = "")
 {
   // Removing new lines from string: https://stackoverflow.com/a/10805198
   mapCode = String(mapCode).trim().replace(/(\r\n|\n|\r)/gm, "");
-  // mapCode = String(mapCode).
+
   let tile = document.createElement("div");
   tile.className = `tile ${specialCode}`;
+
   for(let i = 0; i < mapSizeX*mapSizeY; i++)
   {
-    // console.log(mapCode.charAt(i));
     let newTile = tile.cloneNode();
     let xIndex = Math.floor(i%mapSizeX);
     let yIndex = Math.floor(i/mapSizeX);
