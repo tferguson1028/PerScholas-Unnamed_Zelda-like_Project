@@ -1,22 +1,15 @@
+// Unfortunately I kinda did the inheritance backwards...
 class AreaActivate extends Hitbox
 {
-  constructor(initX, initY, owner, sizeX, sizeY, callOnCollision)
+  constructor(initX, initY, owner, sizeX, sizeY)
   {
     super(initX, initY, owner, 1.2, 1.2, 0, null);
-    this.functionCall = callOnCollision;
     this.linkedHTMLElement.classList.add("interactive");
     this.linkedHTMLElement.style.width = `${sizeX}px`;
     this.linkedHTMLElement.style.height = `${sizeY}px`;
   }
   
-  process(deltaTime)
-  {
-    // super.process(deltaTime);
-    if(this.isColliding(playerActor))
-    {
-      this.functionCall();
-    }
-  }
+  process(deltaTime){}
 }
 
 class AreaInteract extends AreaActivate

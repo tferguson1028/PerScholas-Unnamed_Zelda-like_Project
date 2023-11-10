@@ -62,15 +62,15 @@ function main(deltaTime)
   
   for(let door in dungeonDoors) 
   {
-    if(door.enabled && door.isColliding(playerActor))
+    if(dungeonDoors[door].enabled && dungeonDoors[door].isColliding(playerActor))
     {
-      previousDoor = door;
-      switch(door)
+      previousDoor = dungeonDoors[door];
+      switch(dungeonDoors[door])
       {
-        case dungeonDoors.top: break;
-        case dungeonDoors.bottom: break;
-        case dungeonDoors.left: break;
-        case dungeonDoors.right: break;
+        case dungeonDoors.top: generateNewRoom(); break;
+        case dungeonDoors.bottom: generateNewRoom(); break;
+        case dungeonDoors.left: generateNewRoom(); break;
+        case dungeonDoors.right: generateNewRoom(); break;
       }
     }
   }
@@ -129,3 +129,18 @@ function isRoomCleared()
   });
   return true;
 }
+
+function generateNewRoom()
+{
+  clearRoom();
+  generateMap(testMap, "tileID-floor0");
+  generateEntities(testMap);
+  console.log("AHEIEEEEEEEEEEEEEEEEEE!");
+}
+
+function clearRoom()
+{
+  //TODO: This function should reset the map to its initial state
+}
+
+
