@@ -64,7 +64,6 @@ function main(deltaTime)
   {
     if(dungeonDoors[door].enabled && dungeonDoors[door].isColliding(playerActor))
     {
-      console.log("EEE");
       previousDoor = door;
       generateNewRoom();
       dungeonDoors[door].enabled = false;
@@ -73,7 +72,7 @@ function main(deltaTime)
   
   if(isPlayerDead()) { endGame(); return; }
   
-  if(isRoomCleared()){ console.log("OPENUP"); openAllDoors(true); }
+  if(isRoomCleared()){ openAllDoors(true); }
   else { closeAllDoors(false); }
 }
 
@@ -136,7 +135,6 @@ function generateNewRoom()
   clearRoom();
   generateMap(testMap, "tileID-floor0");
   generateEntities(testMap);
-  console.log("AHEIEEEEEEEEEEEEEEEEEE!");
 }
 
 function openAllDoors()
