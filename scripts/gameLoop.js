@@ -6,7 +6,6 @@ let lastFrameTime = 0;
 let paused = false;
 let previousDoor = null;
 
-
 setInterval(() => 
   {
     // deltaTime is used to create consistency when doing movement in situations when frame rate can vary. 
@@ -129,9 +128,4 @@ function isRoomCleared()
       return false;
   });
   return true;
-}
-
-function generateNewRoom()
-{
-  
 }

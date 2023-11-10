@@ -56,10 +56,6 @@ class Projectile extends Entity
   }
 }
 
-class Interactable extends Projectile
-{
-}
-
 /**
  * Realizing that this class is kinda useless since Projectile has all the same functionality
  * and I'm just removing functionality to make this different

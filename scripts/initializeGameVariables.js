@@ -38,9 +38,14 @@ const dungeonDoors = {
   bottom: undefined,
   left: undefined,
   right: undefined
-}
+};
 
-
+let doorXCenterPos = ((mapSizeX/2)*pixelSize)-(32+(16));
+let doorYCenterPos = ((mapSizeY/2)*pixelSize)-(32+(16));
+dungeonDoors.top =    new AreaActivate(doorXCenterPos, 0, undefined, pixelSize*3, pixelSize, generateNewRoom);
+dungeonDoors.bottom = new AreaActivate(doorXCenterPos, (mapSizeY*pixelSize)-pixelSize, undefined, pixelSize*3, pixelSize, generateNewRoom);
+dungeonDoors.left =   new AreaActivate(0, doorYCenterPos, undefined, pixelSize, pixelSize*3, generateNewRoom);
+dungeonDoors.right =  new AreaActivate((mapSizeX*pixelSize)-pixelSize, doorYCenterPos, undefined, pixelSize, pixelSize*3, generateNewRoom);
 
 
 //# Creating actors
@@ -55,9 +60,21 @@ const playerActor = new PlayerCharacter(
 // playerActor.yPos = (mapSizeY*pixelSize)-(pixelSize*3);
 
 // TODO: Remove this generation when making game start and round system.
-generateMap(testMap, "tileID-floor0");
-generateEntities(testMap);
+// generateMap(testMap, "tileID-floor0");
+// generateEntities(testMap);
 
+function generateNewRoom()
+{
+  clearRoom();
+  generateMap(testMap, "tileID-floor0");
+  generateEntities(testMap);
+  console.log("AHEIEEEEEEEEEEEEEEEEEE!");
+}
+
+function clearRoom()
+{
+  //TODO: This function should reset the map to its initial state
+}
 
 // const roomEnemies = EnemyGenerator.createEnemies(4);
 
