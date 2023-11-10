@@ -1,39 +1,44 @@
-function generateMap(mapCode)
+//  TODO: Remove this generation when making game start and round system.
+generateMap(testMap, "tileID-floor0");
+function generateMap(mapCode, specialCode = "")
 {
-  // https://stackoverflow.com/a/15040335
-  for(let child of gameMap.children)
-    child.className = "tile";
-    
-  for(let i = 0; i < gameMap.children.length; i++)
+  // Removing new lines from string: https://stackoverflow.com/a/10805198
+  mapCode = String(mapCode).trim().replace(/(\r\n|\n|\r)/gm, "");
+  // mapCode = String(mapCode).
+  let tile = document.createElement("div");
+  tile.className = `tile ${specialCode}`;
+  for(let i = 0; i < mapSizeX*mapSizeY; i++)
   {
-    let xIndex = Math.floor(i%pixelSize);
-    let yIndex = Math.floor(i/pixelSize);
-    switch(mapCode[i])
+    // console.log(mapCode.charAt(i));
+    let newTile = tile.cloneNode();
+    let xIndex = Math.floor(i%mapSizeX);
+    let yIndex = Math.floor(i/mapSizeX);
+    switch(mapCode.charAt(i))
     {
       // Dungeon Walls
       case mapKey.wall:
-        if(xIndex === 0)
+        if(yIndex === 0)
         {
-          if(yIndex === 0) gameMap.children[i].classList.add("tileID-wall_top_left");
-          else if (yIndex === mapSizeY-1) gameMap.children[i].classList.add("tileID-wall_top_right");
-          else gameMap.children[i].classList.add("tileID-wall_top");
-        }else if(xIndex === mapSizeX-1)
+          if(xIndex === 0) newTile.classList.add("tileID-wall_top_left");
+          else if (xIndex === mapSizeX-1) newTile.classList.add("tileID-wall_top_right");
+          else newTile.classList.add("tileID-wall_top");
+        }else if(yIndex === mapSizeY-1)
         {
-          if(yIndex === 0) gameMap.children[i].classList.add("tileID-wall_bottom_left");
-          else if (yIndex === mapSizeY-1) gameMap.children[i].classList.add("tileID-wall_bottom_right");
-          else gameMap.children[i].classList.add("tileID-wall_bottom");
+          if(xIndex === 0) newTile.classList.add("tileID-wall_bottom_left");
+          else if (xIndex === mapSizeX-1) newTile.classList.add("tileID-wall_bottom_right");
+          else newTile.classList.add("tileID-wall_bottom");
         }else
         {
-          if(yIndex === 0) gameMap.children[i].classList.add("tileID-wall_left");
-          else if (yIndex === mapSizeY-1) gameMap.children[i].classList.add("tileID-wall_right");
-          else gameMap.children[i].classList.add("tileID-wall_center");
+          if(xIndex === 0) newTile.classList.add("tileID-wall_left");
+          else if (xIndex === mapSizeX-1) newTile.classList.add("tileID-wall_right");
+          else newTile.classList.add("tileID-wall_center");
         }
         break;
 
-      //TODO      
+      //TODO: Setup tile code classes in CSS and use this function to attach them to tiles. 
       // Dungeon Doors
       case mapKey.door_open:
-        gameMap.children[i].classList.add("tileID0");
+        newTile.classList.add("tileID0");
         break;
       
       case mapKey.door_closed:
@@ -48,5 +53,7 @@ function generateMap(mapCode)
       case mapKey.enemy_random:
         break;
     }
+    
+    gameMap.appendChild(newTile);
   }
 }

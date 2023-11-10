@@ -69,23 +69,17 @@ function update()
  */
 function ui()
 {
-  //TODO  
+  //TODO: Update UI based on game variables.
 }
 
 function startGame()
 {
-  //TODO  
+  //TODO: Start game using a function instead of on script load
 
 }
 
 function resetGame()
 {
-  //TODO  
-
-}
-
-function generateMap()
-{
-  //TODO  
+  //TODO: Restart button (optional)
 
 }

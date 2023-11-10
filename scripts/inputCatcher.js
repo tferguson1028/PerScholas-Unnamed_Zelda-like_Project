@@ -50,7 +50,7 @@ class InputCatcher
   static removeInput(input) 
   {
     // Since we know an input has to be pressed to be in the catcher, we don't need to check beforehand.
-    /* WONTFIX
+    /* WONTFIX: Half-press bug
       Turns out there's a bug where isJustReleased() can return true before a press is done.
       This happens because the eventListeners and update functions don't run synchronously.
       This requires computer like reflexes and is impractical for any person to reproduce consistently,

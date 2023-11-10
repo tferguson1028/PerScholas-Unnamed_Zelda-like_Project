@@ -32,17 +32,6 @@ worldBoundary.bottom.yPos = (mapSizeY*pixelSize)-32;
 worldBoundary.bottom.update();
 
 
-//# Initializing Map
-{
-  const tile = document.createElement("div");
-  tile.className = "tile tileID-floor0";
-  // tile.innerHTML = `<img class="sprite" src="">`;
-
-  for(let i = 0; i < mapSizeX*mapSizeY; i++)
-  {
-    gameMap.appendChild(tile.cloneNode(true));
-  }
-}
 //# Creating actors
 const playerActor = new PlayerCharacter(
   document.querySelector(".player")
