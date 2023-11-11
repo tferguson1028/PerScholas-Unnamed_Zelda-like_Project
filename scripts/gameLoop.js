@@ -62,11 +62,13 @@ function main(deltaTime)
   
   for(let door in dungeonDoors) 
   {
-    if(dungeonDoors[door].enabled && dungeonDoors[door].isColliding(playerActor))
+    if(
+      dungeonDoors[door].enabled && 
+      previousDoor !== dungeonDoors[door] && 
+      dungeonDoors[door].isColliding(playerActor))
     {
       previousDoor = door;
       generateNewRoom();
-      dungeonDoors[door].enabled = false;
     }
   }
   
@@ -114,15 +116,6 @@ function isPlayerDead() { return playerActor.health <= 0; }
 
 function isRoomCleared()
 {
-  // Since forEach uses a function within, I need to use a for-of
-  // entityList.forEach((entity) =>
-  // {
-  //   if(entity.linkedHTMLElement.classList.contains("enemy")) 
-  //   {
-  //     return false;
-  //   }
-  // });
-  
   for(let entity of entityList)
     if(entity.linkedHTMLElement.classList.contains("enemy")) 
       return false;
@@ -140,18 +133,14 @@ function generateNewRoom()
 function openAllDoors()
 {
   for(let door in dungeonDoors)
-  {
     if(door !== previousDoor)
       dungeonDoors[door].enabled = true;
-  }
 }
 
 function closeAllDoors()
 {
   for(let door in dungeonDoors)
-  {  
     dungeonDoors[door].enabled = false;
-  }
 }
 
 
