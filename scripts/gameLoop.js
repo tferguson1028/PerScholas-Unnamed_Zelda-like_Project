@@ -71,6 +71,7 @@ function main(deltaTime)
       generateNewRoom();
       setClosedDoor(door);
       currentRoom++;
+      console.log(currentRoom);
     }
   }
   
