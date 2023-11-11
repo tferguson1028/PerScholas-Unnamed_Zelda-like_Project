@@ -13,10 +13,7 @@ class Slime extends Enemy
     switch(this.brain.getAction(undefined))
     {
       default:
-        // console.log(this.xPos);
-        // console.log(this.yPos);
         let distance = this.brain.distanceToTarget(playerActor);
-        // console.log(distance);
         this.moveTo(distance.X, distance.Y, deltaTime); 
     }
   }

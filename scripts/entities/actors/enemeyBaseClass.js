@@ -50,7 +50,7 @@ class Enemy extends Actor
     super.process(deltaTime);
     if(this.hurtArea.isColliding(playerActor))
     {
-      console.log(playerActor.health);
+      console.log("Player health: " + playerActor.health);
       this.hurtForceLeft.enabled = true;
       this.hurtForceRight.enabled = true;
       this.hurtForceTop.enabled = true;

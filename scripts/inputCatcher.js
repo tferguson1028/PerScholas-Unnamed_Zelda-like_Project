@@ -20,9 +20,7 @@ class InputCatcher
     for(let i = 0; i < this.inputHold.length; i++)
     {
       this.inputHold[i] = this.inputHold[i] >= 1 ? this.inputHold[i] + deltaTime : -1;
-    } 
-    // console.log(this.inputList);
-    // console.log(this.inputHold);
+    }
   }
 
   /**

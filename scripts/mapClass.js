@@ -2,7 +2,8 @@ function generateMap(mapCode, specialCode = "")
 {
   // Removing new lines from string: https://stackoverflow.com/a/10805198
   mapCode = String(mapCode).trim().replace(/(\r\n|\n|\r)/gm, "");
-
+  
+  let debugMessage = "";
   let tile = document.createElement("div");
   tile.className = `tile ${specialCode}`;
 
@@ -54,9 +55,13 @@ function generateMap(mapCode, specialCode = "")
         break;
     }
     
+    // Was for debugging
     // setTimeout(() => gameMap.appendChild(newTile), 10*i);
     gameMap.appendChild(newTile);
+    debugMessage += `\n\t${newTile.classList[newTile.classList.length-1]} @(x = ${xIndex*pixelSize}px, y = ${yIndex*pixelSize}px)`;
   }
+  
+  console.log("Generated tiles: " + debugMessage);
   tile.remove();
 }
 
@@ -85,7 +90,7 @@ function generateEntities(mapCode)
       
       // No need to make variable. Entities attach themselves to the entity list when instanced.
       case mapKey.enemy_type0:
-        console.log(`X:${xIndex*pixelSize}, Y:${yIndex*pixelSize}`);
+        console.log(`New enemy${mapKey.enemy_type0} @(x = ${xIndex*pixelSize}px, y = ${yIndex*pixelSize}px)`);
         new Slime((xIndex)*pixelSize, (yIndex)*pixelSize, `slime${i}`, 6);
         break;
       
@@ -102,7 +107,12 @@ function generateEntities(mapCode)
 function clearRoom()
 {
   //No need to increment i as length gets smaller with each deletion.
+  let debugMessage = "";
   for(let i = 0; i < gameMap.children.length; )
+  {
+    debugMessage += `\n\t${gameMap.children[i].classList[gameMap.children[i].classList.length-1]}`;
     gameMap.children[i].remove();
+  }
+  console.log("Removing Tiles: " + debugMessage);
 }
 

@@ -18,19 +18,22 @@ setInterval(() =>
     runTimeSeconds += deltaTime;
     
     // paused = true;
-    if(InputCatcher.isInputJustPressed("`"))
+    if(InputCatcher.isInputJustPressed("tab"))
+    {
+      console.log("Paused toggled");
       paused = !paused;
+    }
     
     if(!paused)
     {
       if(InputCatcher.isInputJustPressed('`'))
-        console.log("Pressed");
+        console.log("DebugKey: Pressed");
         
       if(InputCatcher.isInputHeld('`') > 1)
-        console.log("Held");
+        console.log("DebugKey: Held");
         
       if(InputCatcher.isInputJustReleased('`'))
-        console.log("Released");
+        console.log("DebugKey: Released");
         
       main(deltaTime);
       update();
@@ -71,7 +74,7 @@ function main(deltaTime)
       generateNewRoom();
       setClosedDoor(door);
       currentRoom++;
-      console.log(currentRoom);
+      console.log("Room count: " + currentRoom);
     }
   }
   
