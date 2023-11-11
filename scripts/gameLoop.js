@@ -75,6 +75,14 @@ function main(deltaTime)
       setClosedDoor(door);
       currentRoom++;
       console.log("Room count: " + currentRoom);
+      
+      entityList.forEach((entity) => {
+        if(entity.linkedHTMLElement.classList.contains("enemy"))
+        {
+          entity.enabled = false;
+          setTimeout(() => entity.enabled = true, 400);
+        }
+      });
     }
   }
   
