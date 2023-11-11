@@ -54,9 +54,10 @@ function generateMap(mapCode, specialCode = "")
         break;
     }
     
-    // generateEntities(mapCode);
+    // setTimeout(() => gameMap.appendChild(newTile), 10*i);
     gameMap.appendChild(newTile);
   }
+  tile.remove();
 }
 
 function generateEntities(mapCode)
@@ -100,11 +101,8 @@ function generateEntities(mapCode)
 
 function clearRoom()
 {
-  //TODO: This function should reset the map to its initial state
-  for(let element of gameMap.children)
-  {
-    // console.log(element);
-    element.remove();
-  }
+  //No need to increment i as length gets smaller with each deletion.
+  for(let i = 0; i < gameMap.children.length; )
+    gameMap.children[i].remove();
 }
 

@@ -62,6 +62,7 @@ const playerActor = new PlayerCharacter(
 // TODO: Remove this generation when making game start and round system.
 generateMap(map_StartingRoom, "tileID-floor0");
 generateEntities(map_StartingRoom);
+dungeonDoors.bottom.enabled = false;
 
 // const roomEnemies = EnemyGenerator.createEnemies(4);
 

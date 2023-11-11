@@ -4,7 +4,7 @@ let runTimeSeconds = 0; // I used this for testing deltaTime
 let lastFrameTime = 0;
 
 let paused = false;
-let previousDoor = null;
+let previousDoor = dungeonDoors.bottom;
 
 setInterval(() => 
   {
@@ -72,8 +72,8 @@ function main(deltaTime)
   
   if(isPlayerDead()) { endGame(); return; }
   
-  if(isRoomCleared()){ openAllDoors(true); }
-  else { closeAllDoors(false); }
+  if(isRoomCleared()){ openAllDoors(); }
+  else { closeAllDoors(); }
 }
 
 /**
