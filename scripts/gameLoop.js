@@ -4,7 +4,7 @@ let runTimeSeconds = 0; // I used this for testing deltaTime
 let lastFrameTime = 0;
 
 let paused = false;
-let previousDoor = dungeonDoors.bottom;
+let previousDoor = "bottom";
 
 setInterval(() => 
   {
@@ -64,11 +64,13 @@ function main(deltaTime)
   {
     if(
       dungeonDoors[door].enabled && 
-      previousDoor !== dungeonDoors[door] && 
+      previousDoor !== door && 
       dungeonDoors[door].isColliding(playerActor))
     {
       previousDoor = door;
       generateNewRoom();
+      setClosedDoor(door);
+      currentRoom++;
     }
   }
   
@@ -128,6 +130,29 @@ function generateNewRoom()
   clearRoom();
   generateMap(testMap, "tileID-floor0");
   generateEntities(testMap);
+  
+  switch(previousDoor)
+  {
+    case "top":
+      // playerActor.xPos = (mapSizeX/2)*pixelSize;
+      playerActor.yPos = (mapSizeY-1)*pixelSize;
+      break;
+      
+    case "bottom":
+      // playerActor.xPos = (mapSizeX/2)*pixelSize;
+      playerActor.yPos = (1)*pixelSize;
+      break;
+      
+    case "left":
+      playerActor.xPos = (mapSizeX-1)*pixelSize;
+      // playerActor.yPos = (mapSizeY/2)*pixelSize;
+      break;
+      
+    case "right":
+      playerActor.xPos = (1)*pixelSize;
+      // playerActor.yPos = (mapSizeY/2)*pixelSize;
+      break;
+  }
 }
 
 function openAllDoors()
@@ -143,4 +168,14 @@ function closeAllDoors()
     dungeonDoors[door].enabled = false;
 }
 
+function setClosedDoor(door)
+{
+  switch(door)
+  {
+    case "top": previousDoor = "bottom"; break;
+    case "bottom": previousDoor = "top"; break;
+    case "left": previousDoor = "right"; break;
+    case "right": previousDoor = "left"; break;
+  }
+}
 

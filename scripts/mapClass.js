@@ -70,9 +70,9 @@ function generateEntities(mapCode)
     let yIndex = Math.floor(i/mapSizeX);
     switch(mapCode.charAt(i))
     {
-      case mapKey.player:
-        playerActor.xPos = xIndex*pixelSize;
-        playerActor.yPos = yIndex*pixelSize;
+      case mapKey.player: // No longer needed
+        // playerActor.xPos = xIndex*pixelSize;
+        // playerActor.yPos = yIndex*pixelSize;
         break;
         
       case mapKey.rock:
