@@ -1,5 +1,3 @@
-// FIXME: There is a memory leak somewhere in the map generation code
-
 function generateMap(mapCode, specialCode = "")
 {
   // Removing new lines from string: https://stackoverflow.com/a/10805198
