@@ -55,7 +55,7 @@ function generateMap(mapCode, specialCode = "")
         new StaticEntity(newTile.cloneNode(), null, xIndex*pixelSize, yIndex*pixelSize);
         break;
         
-      case mapKey.empty:
+      default:
         newTile.classList.add("tileID-floor");
         break;
     }

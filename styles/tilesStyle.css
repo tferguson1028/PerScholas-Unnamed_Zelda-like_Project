@@ -4,6 +4,8 @@
 {
   /* background-attachment: local !important; */
   /* background-size: 200%; */
+  background-repeat: no-repeat;
+  background-size: fill;
 }
 
 .tileID-floor0
@@ -23,20 +25,68 @@
 }
 
 /* # General */
-.tileID-floor {}
 
-.tileID-block {}
+
+.tileID-floor 
+{
+  background-image: url("../assets/tiles/floor_0.png");
+}
+
+.tileID-block 
+{
+  
+}
 
 /* # Walls */
-.tileID-wall_top {}
-.tileID-wall_bottom {}
-.tileID-wall_left {}
-.tileID-wall_right {}
+.tileID-wall_top 
+{
+  background-image: 
+    url("../assets/tiles/walls/top_wall.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_bottom 
+{
+  background-image: 
+    url("../assets/tiles/walls/bottom_wall.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_left 
+{
+  background-image: 
+    url("../assets/tiles/walls/left_wall.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_right 
+{
+  background-image: 
+    url("../assets/tiles/walls/right_wall.png"),
+    url("../assets/tiles/floor_0.png");
+}
 
-.tileID-wall_bottom_left {}
-.tileID-wall_bottom_right {}
-.tileID-wall_top_left {}
-.tileID-wall_top_right {}
+.tileID-wall_bottom_left 
+{
+  background-image: 
+    url("../assets/tiles/walls/corner_bottomleft.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_bottom_right 
+{
+  background-image: 
+    url("../assets/tiles/walls/corner_bottomright.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_top_left 
+{
+  background-image: 
+    url("../assets/tiles/walls/corner_topleft.png"),
+    url("../assets/tiles/floor_0.png");
+}
+.tileID-wall_top_right 
+{
+  background-image: 
+    url("../assets/tiles/walls/corner_topright.png"),
+    url("../assets/tiles/floor_0.png");
+}
 
 
 /* # Doors */
