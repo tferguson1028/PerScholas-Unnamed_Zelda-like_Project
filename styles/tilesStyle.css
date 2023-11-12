@@ -21,3 +21,30 @@
   object-position: -176px -32px;
   object-fit: cover !important; */
 }
+
+/* # General */
+.tileID-floor {}
+
+.tileID-block {}
+
+/* # Walls */
+.tileID-wall_top {}
+.tileID-wall_bottom {}
+.tileID-wall_left {}
+.tileID-wall_right {}
+
+.tileID-wall_bottom_left {}
+.tileID-wall_bottom_right {}
+.tileID-wall_top_left {}
+.tileID-wall_top_right {}
+
+
+/* # Doors */
+.tileID-door_closed_left {}
+.tileID-door_closed_right {}
+.tileID-door_closed_top {}
+.tileID-door_closed_bottom {}
+.tileID-door_open_left {}
+.tileID-door_open_right {}
+.tileID-door_open_top {}
+.tileID-door_open_bottom {}

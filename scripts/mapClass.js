@@ -51,8 +51,12 @@ function generateMap(mapCode, specialCode = "")
         break;
         
       case mapKey.block:
-        newTile.classList.add("block");
+        newTile.classList.add("tileID-block");
         new StaticEntity(newTile.cloneNode(), null, xIndex*pixelSize, yIndex*pixelSize);
+        break;
+        
+      case mapKey.empty:
+        newTile.classList.add("tileID-floor");
         break;
     }
     
