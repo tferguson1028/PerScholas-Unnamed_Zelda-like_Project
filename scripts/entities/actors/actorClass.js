@@ -76,14 +76,14 @@ class Actor extends Entity
     this.children.forEach(child => child.processEntity(deltaTime));  
   }
   
-  attachChild(entity)
-  {
-    if(!(entity instanceof Entity))
-      return;
+  // attachChild(entity)
+  // {
+  //   if(!(entity instanceof Entity))
+  //     return;
     
-    this.linkedHTMLElement.appendChild(entity.linkedHTMLElement);
-    this.children.push(entity);
-  }
+  //   this.linkedHTMLElement.appendChild(entity.linkedHTMLElement);
+  //   this.children.push(entity);
+  // }
   
   takeDamage(damage, deltaTime)
   {

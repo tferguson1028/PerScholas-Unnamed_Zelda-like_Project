@@ -16,6 +16,7 @@ class Entity
     this.rotation = 0;
     this.scaleX = 1;
     this.scaleY = 1;
+    this.children = [];
     
     this.spriteIndex = 0;
     this.enabled = true;
@@ -152,4 +153,67 @@ class Entity
     return result;
   }
   
+  attachChild(entity)
+  {
+    if(!(entity instanceof Entity))
+      return;
+    
+    this.linkedHTMLElement.appendChild(entity.linkedHTMLElement);
+    this.children.push(entity);
+  }
 }
+
+class StaticEntity extends Entity
+{
+  constructor(htmlElement, spriteSheet, initX, initY)
+  {
+    super(htmlElement, spriteSheet, initX, initY);
+    this.initX = initX;
+    this.initY = initY;
+    this.linkedHTMLElement.classList.add("object");
+    
+    let borderBase = document.createElement("div");
+    borderBase.style.width = "24px";
+    borderBase.style.height = "24px";
+    borderBase.classList.add("forceEntity");
+    this.borderLeft = new Boundary(borderBase.cloneNode(), 0, 4, -32, 0);
+    this.borderRight = new Boundary(borderBase.cloneNode(), 32-8, 4, 32, 0);
+    this.borderTop = new Boundary(borderBase.cloneNode(), 4, 0, 0, -32);
+    this.borderBottom = new Boundary(borderBase.cloneNode(), 4, 32-8, 0, 32);
+
+    this.borderLeft.enabled = true;
+    this.borderLeft.linkedHTMLElement.style.width = "8px";
+    this.borderLeft.owner = this;
+
+    this.borderRight.enabled = true;
+    this.borderRight.linkedHTMLElement.style.width = "8px";
+    this.borderRight.owner = this;
+
+    this.borderTop.enabled = true;
+    this.borderTop.linkedHTMLElement.style.height = "8px";
+    this.borderTop.owner = this;
+
+    this.borderBottom.enabled = true;
+    this.borderBottom.linkedHTMLElement.style.height = "8px";
+    this.borderBottom.owner = this; 
+
+    this.attachChild(this.borderLeft);
+    this.attachChild(this.borderRight);
+    this.attachChild(this.borderTop);
+    this.attachChild(this.borderBottom);
+  }
+
+  process(deltaTime) 
+  { 
+    super.process();
+    this.xPos = this.initX;
+    this.yPos = this.initY;
+  }
+  
+  translate(deltaX, deltaY)
+  {
+    // Do not allow entity to move
+    return;
+  }
+}
+

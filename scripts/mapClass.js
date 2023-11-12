@@ -51,7 +51,9 @@ function generateMap(mapCode, specialCode = "")
         break;
         
       case mapKey.block:
-        newTile.classList.add();
+        console.log("BLOBK");
+        newTile.classList.add("block");
+        new StaticEntity(newTile.cloneNode(), null, xIndex*pixelSize, yIndex*pixelSize);
         break;
     }
     
@@ -114,5 +116,16 @@ function clearRoom()
     gameMap.children[i].remove();
   }
   console.log("Removing Tiles: " + debugMessage);
+  
+  debugMessage = "";
+  for(let i = 0; i < entityList.length; i++)
+  {
+    if(entityList[i].linkedHTMLElement.classList.contains("object"))
+    {
+      entityList[i].dispose();
+      i--;
+    }
+    
+  }
 }
 
