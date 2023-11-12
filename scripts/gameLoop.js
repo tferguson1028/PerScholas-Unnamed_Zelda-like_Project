@@ -140,8 +140,10 @@ function isRoomCleared()
 function generateNewRoom()
 {
   clearRoom();
-  generateMap(testMap, "tileID-floor0");
-  generateEntities(testMap);
+  let mapSelection = mapPool[Math.floor(Math.random()*mapPool.length)];
+  generateMap(mapSelection, "tileID-floor0");
+  generateEntities(mapSelection);
+  console.log("SelectedMap: " + mapSelection);
   
   switch(previousDoor)
   {

@@ -1,3 +1,5 @@
+// FIXME: There is a memory leak somewhere in the map generation code
+
 function generateMap(mapCode, specialCode = "")
 {
   // Removing new lines from string: https://stackoverflow.com/a/10805198
@@ -117,7 +119,6 @@ function clearRoom()
   }
   console.log("Removing Tiles: " + debugMessage);
   
-  debugMessage = "";
   for(let i = 0; i < entityList.length; i++)
   {
     if(entityList[i].linkedHTMLElement.classList.contains("object"))
@@ -125,7 +126,6 @@ function clearRoom()
       entityList[i].dispose();
       i--;
     }
-    
   }
 }
 
