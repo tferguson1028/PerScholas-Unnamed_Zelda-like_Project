@@ -79,6 +79,10 @@ class Entity
     console.log(`Disposing ${this.constructor.name}`);
     this.linkedHTMLElement.remove();
     entityList.splice(entityList.indexOf(this), 1);
+    for(let child of this.children)
+    {
+      child.dispose();
+    }
   }
   
   /**

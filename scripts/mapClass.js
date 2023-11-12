@@ -53,7 +53,6 @@ function generateMap(mapCode, specialCode = "")
         break;
         
       case mapKey.block:
-        console.log("BLOBK");
         newTile.classList.add("block");
         new StaticEntity(newTile.cloneNode(), null, xIndex*pixelSize, yIndex*pixelSize);
         break;
