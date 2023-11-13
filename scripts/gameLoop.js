@@ -42,6 +42,7 @@ setInterval(() =>
     
     // Updating input catcher after running logic allows for just pressed and just released to function
     InputCatcher.update(deltaTime);
+    // console.log("FPS " + deltaTime*maxFrames*1000);
   },
   1000/maxFrames // This function runs maxFrames every second
 );
@@ -189,14 +190,12 @@ function updateDoorTiles()
 {
   for(let door in dungeonDoors)
   {
-    document.querySelectorAll(`tileID-door_${door}`).children.forEach((tile) =>
+    document.querySelectorAll(`.tileID-door_${door}`).forEach((tile) =>
     {
       let state = dungeonDoors[door].enabled === true ? "open" : "closed";
       tile.classList.remove("door_closed");
       tile.classList.remove("door_open");
-      tile.classList.add(`door_${state}`);
-      
-      // console.log(tile.classList)
+      tile.classList.add(`door_${state}`);      
     });
   }
 }
