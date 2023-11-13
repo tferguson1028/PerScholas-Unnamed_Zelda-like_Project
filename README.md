@@ -1,14 +1,12 @@
-# Zelda Inspired Game
+# Slime Dungeon
 
-This project will be a game similar to the older, top-down "The Legend of Zelda" games.
+This project is a top-down, "The Legend of Zelda" type game where you go through an endless dungeon and defeat slimes.
 
-Right now I'm making a single section of the full
-dungeon, but later I want to make the entire
-dungeon structure that I had designed.
+The goal (for now) is to clear as many rooms as possible.
 
-The goal (for now) is to clear rooms in the dungeon and get the the MacGuffin at the end.
-
-Throughout the dungeon there will be enemies that you must defeat to continue towards the MacGuffin.
+Some issues:
+- Game runs slow
+- Collision is very buggy
 
 ## Motivation
 
@@ -20,16 +18,31 @@ the idea.
 Since it's relatively simple but requires me writing functionality that
 I haven't done before, I want to make it to learn how to do that.
 
-It will require a lot more DOM manipulation since I'll be dynamically adding and removing HTML elements and, in addition to that, I will need to learn how to do:
+However, I realized I would not meet the deadline so it has been downscaled to what you see now.
+
+Doing this project allowed me to learn he basics of
+- DOM manipulation 
+- Dynamically adding and removing HTML elements
 - Collision detection, 
 - Frame-based input detection,
 - Hitbox-hurtbox detection/interactions and 
 - Using keyframes for animations.
 
 ## Technologies
-- HTML
+- HTML (without canvas tags)
 - CSS
 - JS
 
 ## Credits
-- Me and only me for right now
+
+#### Developed by 
+- Tesean Ferguson
+
+#### Assets by
+- [Buch](https://opengameart.org/users/buch)
+- [Corey Archer](https://opengameart.org/users/corey-archer)
+- [LUNARSIGNALS](https://opengameart.org/users/lunarsignals)
+- [Bonsaiheldin](https://bonsaiheld.org)
+- [59naga](https://opengameart.org/users/59naga)
+- [rihatsux](https://opengameart.org/users/rihatsux)
+- [Jayvee Enaguas](https://www.dafont.com/jayvee-d-enaguas.d2725)
