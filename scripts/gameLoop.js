@@ -109,6 +109,7 @@ function update(deltaTime)
 function ui()
 {
   //TODO: Update UI based on game variables.
+  
 }
 
 function startGame()
