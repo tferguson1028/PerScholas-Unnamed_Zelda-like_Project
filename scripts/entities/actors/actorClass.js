@@ -11,6 +11,8 @@ class Actor extends Entity
     this.health = health;
     this.team = team;
     this.direction = direction["N"];
+    this.spriteSpeed = 0;
+    this.spriteIndex = 0;
     
     this.iFrames = iFrames;
     this.iFramesMax = iFrames;
@@ -89,12 +91,14 @@ class Actor extends Entity
   {
     if(this.iFrames < this.iFramesMax)
       return;
-      
+    
     this.iFrames = 0;
     this.linkedHTMLElement.classList.add("damaged");
     this.health = Math.max(0, this.health - damage);
+    this.spriteSpeed = this.spriteSpeed/2;
     setTimeout(() => {
-        this.linkedHTMLElement.classList.remove("damaged")
+        this.linkedHTMLElement.classList.remove("damaged");
+        this.spriteSpeed = this.spriteSpeed*2;
       }, 
     this.iFramesMax*1000);
   }

@@ -1,0 +1,6 @@
+.damaged 
+{ 
+  filter: 
+    invert(100%)
+    brightness(120%)
+}
