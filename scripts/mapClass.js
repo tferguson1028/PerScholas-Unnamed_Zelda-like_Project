@@ -34,7 +34,6 @@ function generateMap(mapCode, specialCode = "")
         }
         break;
 
-      //TODO: Setup tile code classes in CSS and use this function to attach them to tiles. 
       // Dungeon Doors
       case mapKey.door_open:
         // Left Door

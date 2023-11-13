@@ -103,13 +103,21 @@ function update(deltaTime)
   updateDoorTiles();
 }
 
+const roundCount = document.querySelector(".roundCount");
+const healthIcons = document.querySelector("#playerInformation > .health");
 /**
  * Holds UI updates for the player
  */
 function ui()
 {
   //TODO: Update UI based on game variables.
-  
+  for(let i = playerActor.maxHealth; i > 0; i--)
+  {
+    if(i <= playerActor.health)
+      break;
+    healthIcons.children[i-1].style.visibility = "hidden";
+  }
+  roundCount.textContent = "Room " + currentRoom;
 }
 
 function startGame()
