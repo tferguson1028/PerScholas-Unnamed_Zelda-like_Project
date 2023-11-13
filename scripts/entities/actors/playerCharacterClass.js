@@ -160,27 +160,16 @@ class PlayerCharacter extends Actor
       InputCatcher.isInputPressed('s') ||
       InputCatcher.isInputPressed('d')
     )
-    {
-      this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 2;
-      switch(this.direction)
-      {
-        case direction.N: 
-          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_up_${Math.floor(this.spriteIndex)}.png)`;
-          break;
+    {      
+      for(let i = 0; i < 2; i++)
+        this.linkedHTMLElement.classList.remove(`spriteIndex_${i}`);
       
-        case direction.S: 
-          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_down_${Math.floor(this.spriteIndex)}.png)`;
-          break;
-          
-        case direction.E: 
-          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_right_${Math.floor(this.spriteIndex)}.png)`;
-          break;
-          
-        case direction.W: 
-          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_left_${Math.floor(this.spriteIndex)}.png)`;
-          break;
+      for(let dir in direction)
+        this.linkedHTMLElement.classList.remove(`direction_${direction[dir]}`);
         
-      }
+      this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 2;
+      this.linkedHTMLElement.classList.add(`direction_${this.direction}`);
+      this.linkedHTMLElement.classList.add(`spriteIndex_${Math.floor(this.spriteIndex)}`);      
     }
   }
 }

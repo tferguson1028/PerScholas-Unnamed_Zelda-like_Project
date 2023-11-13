@@ -1,0 +1,11 @@
+.player.direction_north.spriteIndex_0 { background-image: url("../../assets/sprites/hero/hero_walk_up_0.png"); }
+.player.direction_north.spriteIndex_1 { background-image: url("../../assets/sprites/hero/hero_walk_up_1.png"); }
+
+.player.direction_south.spriteIndex_0 { background-image: url("../../assets/sprites/hero/hero_walk_down_0.png"); }
+.player.direction_south.spriteIndex_1 { background-image: url("../../assets/sprites/hero/hero_walk_down_1.png"); }
+
+.player.direction_east.spriteIndex_0 { background-image: url("../../assets/sprites/hero/hero_walk_right_0.png"); }
+.player.direction_east.spriteIndex_1 { background-image: url("../../assets/sprites/hero/hero_walk_right_1.png"); }
+
+.player.direction_west.spriteIndex_0 { background-image: url("../../assets/sprites/hero/hero_walk_left_0.png"); }
+.player.direction_west.spriteIndex_1 { background-image: url("../../assets/sprites/hero/hero_walk_left_1.png"); }
