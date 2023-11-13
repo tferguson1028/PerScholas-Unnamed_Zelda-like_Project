@@ -36,7 +36,7 @@ setInterval(() =>
         console.log("DebugKey: Released");
         
       main(deltaTime);
-      update();
+      update(deltaTime);
       ui();
     }
     
@@ -96,10 +96,10 @@ function main(deltaTime)
 /**
  * Updates all entities CSS based on their new parameters and variables
  */
-function update()
+function update(deltaTime)
 {
   // May change this later
-  entityList.forEach(entity => entity.update());
+  entityList.forEach(entity => entity.update(deltaTime));
   updateDoorTiles();
 }
 

@@ -58,7 +58,7 @@ class Entity
   /**
    * Updates the CSS based on the Entity's internal variables.
    */
-  update() 
+  update(deltaTime) 
   {
     if(typeof this.linkedHTMLElement !== "undefined")
     {
@@ -108,7 +108,7 @@ class Entity
   getCollisionBox()
   {
     // This makes collision work
-    this.update();
+    this.update(0);
 
     // https://stackoverflow.com/a/63419039
     return this.linkedHTMLElement.getBoundingClientRect();

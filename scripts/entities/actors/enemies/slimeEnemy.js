@@ -5,7 +5,7 @@ class Slime extends Enemy
   {
     super(new AIStraightPath(), Slime.spritePath, initX, initY, name, health, 1.5);
     this.brain.setOwner(this);
-    this.spriteSpeed = 0.001;
+    this.spriteSpeed = 6;
     this.spriteIndex = 0;
   }
   
@@ -20,11 +20,11 @@ class Slime extends Enemy
     }
   }
   
-  update()
+  update(deltaTime)
   {
-    super.update()
+    super.update(deltaTime)
     {
-      this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 4;
+      this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 4;
       this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/slime/slime_${Math.floor(this.spriteIndex)}.png)`;    
     }
   }

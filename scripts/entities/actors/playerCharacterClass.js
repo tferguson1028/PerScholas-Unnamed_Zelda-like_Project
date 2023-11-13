@@ -20,7 +20,7 @@ class PlayerCharacter extends Actor
     this.attachChild(this.attackHitbox);
     this.attachChild(this.forceHitbox);
     
-    this.spriteSpeed = 0.01;
+    this.spriteSpeed = 4;
     this.spriteIndex = 0;
   }
   
@@ -151,9 +151,9 @@ class PlayerCharacter extends Actor
     }
   }
   
-  update()
+  update(deltaTime)
   {
-    super.update();
+    super.update(deltaTime);
     if(
       InputCatcher.isInputPressed('w') ||
       InputCatcher.isInputPressed('a') ||
@@ -161,24 +161,22 @@ class PlayerCharacter extends Actor
       InputCatcher.isInputPressed('d')
     )
     {
+      this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 2;
       switch(this.direction)
       {
         case direction.N: 
-          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
           this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_up_${Math.floor(this.spriteIndex)}.png)`;
           break;
+      
         case direction.S: 
-          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
           this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_down_${Math.floor(this.spriteIndex)}.png)`;
           break;
           
         case direction.E: 
-          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
           this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_right_${Math.floor(this.spriteIndex)}.png)`;
           break;
           
         case direction.W: 
-          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
           this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_left_${Math.floor(this.spriteIndex)}.png)`;
           break;
         
