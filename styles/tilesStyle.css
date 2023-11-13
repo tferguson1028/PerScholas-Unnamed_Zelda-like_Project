@@ -42,48 +42,48 @@
 {
   background-image: 
     url("../assets/tiles/walls/top_wall.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_bottom 
 {
   background-image: 
     url("../assets/tiles/walls/bottom_wall.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_left 
 {
   background-image: 
     url("../assets/tiles/walls/left_wall.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_right 
 {
   background-image: 
     url("../assets/tiles/walls/right_wall.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-wall_bottom_left 
 {
   background-image: 
     url("../assets/tiles/walls/corner_bottomleft.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_bottom_right 
 {
   background-image: 
     url("../assets/tiles/walls/corner_bottomright.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_top_left 
 {
   background-image: 
     url("../assets/tiles/walls/corner_topleft.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-wall_top_right 
 {
   background-image: 
     url("../assets/tiles/walls/corner_topright.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }

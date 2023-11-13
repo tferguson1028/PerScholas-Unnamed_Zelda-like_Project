@@ -4,28 +4,28 @@
 {
   background-image:
     url("../assets/tiles/walls/left_door_0.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_right.door_0.door_open, 
 .tileID-door_right.door_0.door_closed
 {
   background-image:
     url("../assets/tiles/walls/right_door_0.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_top.door_0.door_open, 
 .tileID-door_top.door_0.door_closed
 {
   background-image:
     url("../assets/tiles/walls/top_door_0.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_bottom.door_0.door_open, 
 .tileID-door_bottom.door_0.door_closed
 {
   background-image:
     url("../assets/tiles/walls/bottom_door_0.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 /* % Sides 2 */
@@ -34,28 +34,28 @@
 {
   background-image:
     url("../assets/tiles/walls/left_door_2.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_right.door_2.door_open, 
 .tileID-door_right.door_2.door_closed
 {
   background-image:
     url("../assets/tiles/walls/right_door_2.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_top.door_2.door_open, 
 .tileID-door_top.door_2.door_closed
 {
   background-image:
     url("../assets/tiles/walls/top_door_2.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 .tileID-door_bottom.door_2.door_open, 
 .tileID-door_bottom.door_2.door_closed
 {
   background-image:
     url("../assets/tiles/walls/bottom_door_2.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 /* % Door */
@@ -63,28 +63,28 @@
 {
   background-image:
     url("../assets/tiles/walls/left_door_1.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-door_left.door_1.door_open
 {
   background-image:
     url("../assets/tiles/walls/left_door_1_open.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-door_right.door_1.door_closed
 {
   background-image:
     url("../assets/tiles/walls/right_door_1.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-door_right.door_1.door_open
 {
   background-image:
     url("../assets/tiles/walls/right_door_1_open.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 
@@ -92,14 +92,14 @@
 {
   background-image:
     url("../assets/tiles/walls/top_door_1.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-door_top.door_1.door_open
 {
   background-image:
     url("../assets/tiles/walls/top_door_1_open.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 
@@ -107,12 +107,12 @@
 {
   background-image:
     url("../assets/tiles/walls/bottom_door_1.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
 
 .tileID-door_bottom.door_1.door_open
 {
   background-image:
     url("../assets/tiles/walls/bottom_door_1_open.png"),
-    url("../assets/tiles/floor_0.png");
+    url("../assets/tiles/door_under.png");
 }
