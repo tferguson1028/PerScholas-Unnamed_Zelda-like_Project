@@ -5,6 +5,8 @@ class Slime extends Enemy
   {
     super(new AIStraightPath(), Slime.spritePath, initX, initY, name, health, 1.5);
     this.brain.setOwner(this);
+    this.spriteSpeed = 0.001;
+    this.spriteIndex = 0;
   }
   
   process(deltaTime)
@@ -15,6 +17,15 @@ class Slime extends Enemy
       default:
         let distance = this.brain.distanceToTarget(playerActor);
         this.moveTo(distance.X, distance.Y, deltaTime); 
+    }
+  }
+  
+  update()
+  {
+    super.update()
+    {
+      this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 4;
+      this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/slime/slime_${Math.floor(this.spriteIndex)}.png)`;    
     }
   }
 }

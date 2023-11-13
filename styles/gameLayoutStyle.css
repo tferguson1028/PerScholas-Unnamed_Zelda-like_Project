@@ -81,7 +81,7 @@
   height: var(--tileSize) !important;
   white-space: nowrap !important;
   overflow: visible !important;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .entity * {

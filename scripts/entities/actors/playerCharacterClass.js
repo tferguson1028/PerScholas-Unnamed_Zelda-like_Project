@@ -19,6 +19,9 @@ class PlayerCharacter extends Actor
     
     this.attachChild(this.attackHitbox);
     this.attachChild(this.forceHitbox);
+    
+    this.spriteSpeed = 0.01;
+    this.spriteIndex = 0;
   }
   
   /**
@@ -145,6 +148,41 @@ class PlayerCharacter extends Actor
       },
         200
       );
+    }
+  }
+  
+  update()
+  {
+    super.update();
+    if(
+      InputCatcher.isInputPressed('w') ||
+      InputCatcher.isInputPressed('a') ||
+      InputCatcher.isInputPressed('s') ||
+      InputCatcher.isInputPressed('d')
+    )
+    {
+      switch(this.direction)
+      {
+        case direction.N: 
+          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
+          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_up_${Math.floor(this.spriteIndex)}.png)`;
+          break;
+        case direction.S: 
+          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
+          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_down_${Math.floor(this.spriteIndex)}.png)`;
+          break;
+          
+        case direction.E: 
+          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
+          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_right_${Math.floor(this.spriteIndex)}.png)`;
+          break;
+          
+        case direction.W: 
+          this.spriteIndex = (this.spriteIndex + this.spriteSpeed) % 2;
+          this.linkedHTMLElement.style.backgroundImage = `url(../../../../assets/sprites/hero/hero_walk_left_${Math.floor(this.spriteIndex)}.png)`;
+          break;
+        
+      }
     }
   }
 }
