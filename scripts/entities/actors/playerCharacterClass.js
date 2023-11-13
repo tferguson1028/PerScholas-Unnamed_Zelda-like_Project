@@ -9,6 +9,8 @@ class PlayerCharacter extends Actor
     
     this.attackHitbox = new Hitbox(0, 0, this, 0.8, 1, 2);
     this.forceHitbox = new Force(document.createElement('div'), 0, 0, 0, 0);
+    this.forceHitbox.owner = this;
+    
     this.attackHitbox.enabled = false;
     this.forceHitbox.enabled = false;
     this.forceHitbox.scaleX = 0.8;
@@ -22,6 +24,8 @@ class PlayerCharacter extends Actor
     
     this.spriteSpeed = 4;
     this.spriteIndex = 0;
+    
+    this.walkSprite(0);
   }
   
   /**
@@ -37,54 +41,55 @@ class PlayerCharacter extends Actor
     this.doMovement(deltaTime);
     this.doAttack(deltaTime);
     
+    let attackOffset = pixelSize-2;
     switch(this.direction)
     {
       case direction.N:
         this.forceHitbox.xPos = 0;
-        this.forceHitbox.yPos = -(pixelSize+2);
+        this.forceHitbox.yPos = -attackOffset;
         this.forceHitbox.rotation = 0;
         this.forceHitbox.forceX = 0
         this.forceHitbox.forceY = -8;
         
         this.attackHitbox.xPos = 0;
-        this.attackHitbox.yPos = -(pixelSize+2);
+        this.attackHitbox.yPos = -attackOffset;
         this.attackHitbox.rotation = 0;
         break;
         
       case direction.E:
-        this.forceHitbox.xPos = (pixelSize+2);
+        this.forceHitbox.xPos = attackOffset;
         this.forceHitbox.yPos = 0;
         this.forceHitbox.rotation = 90;
-        this.forceHitbox.forceX = 8
+        this.forceHitbox.forceX = 8;
         this.forceHitbox.forceY = 0;
         
-        this.attackHitbox.xPos = (pixelSize+2);
+        this.attackHitbox.xPos = attackOffset;
         this.attackHitbox.yPos = 0;
         this.attackHitbox.rotation = 90;
         break;
         
       case direction.S:
         this.forceHitbox.xPos = 0;
-        this.forceHitbox.yPos = (pixelSize+2);
-        this.forceHitbox.rotation = 0;
-        this.forceHitbox.forceX = 0
+        this.forceHitbox.yPos = attackOffset;
+        this.forceHitbox.rotation = 180;
+        this.forceHitbox.forceX = 0;
         this.forceHitbox.forceY = 8;
         
         this.attackHitbox.xPos = 0;
-        this.attackHitbox.yPos = (pixelSize+2);
-        this.attackHitbox.rotation = 0;
+        this.attackHitbox.yPos = attackOffset;
+        this.attackHitbox.rotation = 180;
         break;
         
       case direction.W:
-        this.forceHitbox.xPos = -(pixelSize+2);
+        this.forceHitbox.xPos = -attackOffset;
         this.forceHitbox.yPos = 0;
-        this.forceHitbox.rotation = 90;
+        this.forceHitbox.rotation = 270;
         this.forceHitbox.forceX = -8;
         this.forceHitbox.forceY = 0;
         
-        this.attackHitbox.xPos = -(pixelSize+2);
+        this.attackHitbox.xPos = -attackOffset;
         this.attackHitbox.yPos = 0;
-        this.attackHitbox.rotation = 90;
+        this.attackHitbox.rotation = 270;
         break;
     }
   }
@@ -142,9 +147,13 @@ class PlayerCharacter extends Actor
     {
       this.attackHitbox.enabled = true;
       this.forceHitbox.enabled = true;
+      this.linkedHTMLElement.classList.add("attacking");
+      this.attackHitbox.linkedHTMLElement.classList.add("attacking");
       setTimeout(() => {
         this.attackHitbox.enabled = false;
         this.forceHitbox.enabled = false;
+        this.linkedHTMLElement.classList.remove("attacking");
+        this.attackHitbox.linkedHTMLElement.classList.remove("attacking");
       },
         200
       );
@@ -160,16 +169,21 @@ class PlayerCharacter extends Actor
       InputCatcher.isInputPressed('s') ||
       InputCatcher.isInputPressed('d')
     )
-    {      
-      for(let i = 0; i < 2; i++)
-        this.linkedHTMLElement.classList.remove(`spriteIndex_${i}`);
-      
-      for(let dir in direction)
-        this.linkedHTMLElement.classList.remove(`direction_${direction[dir]}`);
-        
-      this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 2;
-      this.linkedHTMLElement.classList.add(`direction_${this.direction}`);
-      this.linkedHTMLElement.classList.add(`spriteIndex_${Math.floor(this.spriteIndex)}`);      
+    {
+      this.walkSprite(deltaTime);   
     }
+  }
+  
+  walkSprite(deltaTime)
+  { 
+    for(let i = 0; i < 2; i++)
+      this.linkedHTMLElement.classList.remove(`spriteIndex_${i}`);
+    
+    for(let dir in direction)
+      this.linkedHTMLElement.classList.remove(`direction_${direction[dir]}`);
+      
+    this.spriteIndex = (this.spriteIndex + (this.spriteSpeed*deltaTime)) % 2;
+    this.linkedHTMLElement.classList.add(`direction_${this.direction}`);
+    this.linkedHTMLElement.classList.add(`spriteIndex_${Math.floor(this.spriteIndex)}`);   
   }
 }

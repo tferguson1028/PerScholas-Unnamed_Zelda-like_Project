@@ -58,6 +58,7 @@
 
 #game > #gameplayArea > #gameEntities {
   position: absolute;
+  z-index: 5;
 }
 
 .tile

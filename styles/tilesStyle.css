@@ -6,6 +6,7 @@
   /* background-size: 200%; */
   background-repeat: no-repeat;
   background-size: fill;
+  z-index: -10;
 }
 
 .tileID-floor0
@@ -35,6 +36,7 @@
 .tileID-block 
 {
   background-image: url("../assets/tiles/block.png");
+  z-index: -10;
 }
 
 /* # Walls */

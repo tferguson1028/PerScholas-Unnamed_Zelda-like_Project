@@ -9,3 +9,10 @@
 
 .player.direction_west.spriteIndex_0 { background-image: url("../../assets/sprites/hero/hero_walk_left_0.png"); }
 .player.direction_west.spriteIndex_1 { background-image: url("../../assets/sprites/hero/hero_walk_left_1.png"); }
+
+.player.direction_north.attacking { background-image: url("../../assets/sprites/hero/hero_attack_up.png"); }
+.player.direction_south.attacking { background-image: url("../../assets/sprites/hero/hero_attack_down.png"); }
+.player.direction_east.attacking { background-image: url("../../assets/sprites/hero/hero_attack_right.png"); }
+.player.direction_west.attacking { background-image: url("../../assets/sprites/hero/hero_attack_left.png"); }
+
+.player > .attacking { background-image: url("../../assets/sprites/hero/sword.png"); }
