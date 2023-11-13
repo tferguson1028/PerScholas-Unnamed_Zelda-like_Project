@@ -37,10 +37,41 @@ function generateMap(mapCode, specialCode = "")
       //TODO: Setup tile code classes in CSS and use this function to attach them to tiles. 
       // Dungeon Doors
       case mapKey.door_open:
-        if(xIndex === 0) newTile.classList.add("tileID-door_closed_left");
-        if(xIndex === mapSizeX-1) newTile.classList.add("tileID-door_closed_right");
-        if(yIndex === 0) newTile.classList.add("tileID-door_closed_top");
-        if(yIndex === mapSizeY-1) newTile.classList.add("tileID-door_closed_bottom");
+        // Left Door
+        if(xIndex === 0)
+        {
+          let id = "tileID-door_left";
+          if(document.querySelectorAll(`.${id}`).length === 0) newTile.classList.add(id, "door_0", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 1) newTile.classList.add(id, "door_1", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 2) newTile.classList.add(id, "door_2", "door_closed");
+        }
+        
+        // Right Door
+        if(xIndex === mapSizeX-1) 
+        {          
+          let id = "tileID-door_right";
+          if(document.querySelectorAll(`.${id}`).length === 0) newTile.classList.add(id, "door_0", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 1) newTile.classList.add(id, "door_1", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 2) newTile.classList.add(id, "door_2", "door_closed");
+        }
+        
+        // Top Door
+        if(yIndex === 0)
+        {          
+          let id = "tileID-door_top";
+          if(document.querySelectorAll(`.${id}`).length === 0) newTile.classList.add(id, "door_0", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 1) newTile.classList.add(id, "door_1", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 2) newTile.classList.add(id, "door_2", "door_closed");
+        }
+        
+        // Bottom Door
+        if(yIndex === mapSizeY-1)
+        {          
+          let id = "tileID-door_bottom";
+          if(document.querySelectorAll(`.${id}`).length === 0) newTile.classList.add(id, "door_0", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 1) newTile.classList.add(id, "door_1", "door_closed");
+          else if(document.querySelectorAll(`.${id}`).length === 2) newTile.classList.add(id, "door_2", "door_closed");
+        }
         break;
       
       case mapKey.door_closed:

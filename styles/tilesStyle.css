@@ -87,14 +87,3 @@
     url("../assets/tiles/walls/corner_topright.png"),
     url("../assets/tiles/floor_0.png");
 }
-
-
-/* # Doors */
-.tileID-door_closed_left {}
-.tileID-door_closed_right {}
-.tileID-door_closed_top {}
-.tileID-door_closed_bottom {}
-.tileID-door_open_left {}
-.tileID-door_open_right {}
-.tileID-door_open_top {}
-.tileID-door_open_bottom {}

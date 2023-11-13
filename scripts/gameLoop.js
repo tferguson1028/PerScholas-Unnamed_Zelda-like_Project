@@ -99,6 +99,7 @@ function update()
 {
   // May change this later
   entityList.forEach(entity => entity.update());
+  updateDoorTiles();
 }
 
 /**
@@ -172,14 +173,32 @@ function generateNewRoom()
 function openAllDoors()
 {
   for(let door in dungeonDoors)
+  {
     if(door !== previousDoor)
       dungeonDoors[door].enabled = true;
+  }
 }
 
 function closeAllDoors()
 {
   for(let door in dungeonDoors)
     dungeonDoors[door].enabled = false;
+}
+
+function updateDoorTiles()
+{
+  for(let door in dungeonDoors)
+  {
+    document.querySelectorAll(`tileID-door_${door}`).children.forEach((tile) =>
+    {
+      let state = dungeonDoors[door].enabled === true ? "open" : "closed";
+      tile.classList.remove("door_closed");
+      tile.classList.remove("door_open");
+      tile.classList.add(`door_${state}`);
+      
+      // console.log(tile.classList)
+    });
+  }
 }
 
 function setClosedDoor(door)
