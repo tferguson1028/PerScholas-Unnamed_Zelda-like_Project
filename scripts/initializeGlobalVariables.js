@@ -4,6 +4,7 @@ const pixelSize = 32;
 const entityList = [];
 const gameMap = document.querySelector("#gameMap");
 const gameEntities = document.querySelector("#gameEntities");
+const debugVisual = document.querySelector("#debugVisual");
 
 const mapSizeX = 19;
 const mapSizeY = 11;

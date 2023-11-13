@@ -24,6 +24,13 @@ setInterval(() =>
       paused = !paused;
     }
     
+    if(InputCatcher.isInputJustPressed("`"))
+    {
+      // Kinda got this idea from https://stackoverflow.com/a/54441305
+      if(debugVisual.rel === "stylesheet") debugVisual.rel = "";
+      else debugVisual.rel = "stylesheet";
+    }
+    
     if(!paused)
     {
       if(InputCatcher.isInputJustPressed('`'))
